@@ -1,0 +1,85 @@
+[{
+	"pk": 1,
+	"model": "products.product",
+	"fields": {
+		"name": "Clean Up Kit (Adult)",
+		"description": "Our Adult size Clean Up kit contains an adult size high visibility vest embellished with the KCC Logo, an adult’s size litter picker, a roll of heavy-duty rubbish bags",
+		"information": "As we buy our kits in bulk, we are able to pass on the savings to you. The price includes a small donation to the KCC to help us with the purchase of additional materials and pay for the running costs of the group",
+        "price": 30.00,
+		"category": 1,
+		"image_url": "",
+		"image": ""
+	}
+}, {
+	"pk": 2,
+	"model": "products.product",
+	"fields": {
+        "name": "Clean Up Kit (Child)",
+		"description": "Our Child size Clean Up kit contains a child size high visibility vest embellished with the KCC Logo, an child’s size litter picker, a roll of heavy-duty rubbish bags",
+		"information": "As we buy our kits in bulk, we are able to pass on the savings to you. The price includes a small donation to the KCC to help us with the purchase of additional materials and pay for the running costs of the group",
+        "price": 20.00,
+		"category": 1,
+		"image_url": "",
+		"image": ""
+	}
+}, {
+	"pk": 3,
+	"model": "products.product",
+	"fields": {
+        "name": "Wildflower Meadow",
+		"description": "Our wildflower mix contains 1000s of seeds from Irish wildflower species. Each pack comes with clay and top soil premixed, providing coverage for approx. 2m2",
+		"information": "As we buy our seeds and clay in bulk, we are able to pass on the savings to you. The price includes a small donation to the KCC to help us with the purchase of additional materials and pay for the running costs of the group",
+        "price": 5.00,
+		"category": 2,
+		"image_url": "",
+		"image": ""
+	}
+}, {
+	"pk": 4,
+	"model": "products.product",
+	"fields": {
+		"name": "Gift a Tree",
+		"description": "The prefect gift. A native Irish tree will be planted in your name",
+        "information": "In return for your donation, you will receive a certificate containing the species, information and location of your tree",
+		"price": 100.00,
+		"category": 2,
+		"image_url": "",
+		"image": ""
+	}
+}, {
+	"pk": 5,
+	"model": "products.product",
+	"fields": {
+		"name": "Water Bottle",
+		"description": "Dishwasher safe, 100% recycled plastic, eco-friendly and embellished with the KCC logo",
+        "information": "A small portion of the cost includes a donation to the KCC to help us with the purchase of additional materials and pay for the running costs of the group",
+		"price": 10.00,
+		"category": 2,
+		"image_url": "",
+		"image": ""
+	}
+}, {
+	"pk": 6,
+	"model": "products.product",
+	"fields": {
+		"name": "Silver Donation",
+		"description": "A donation of €50.00",
+        "information": "",
+		"price": 50.00,
+		"category": 3,
+		"image_url": "",
+		"image": ""
+	}
+}, {
+	"pk": 7,
+	"model": "products.product",
+	"fields": {
+        "name": "Gold Donation",
+		"description": "A donation of €100.00",
+        "information": "",
+		"price": 100.00,
+		"category": 3,
+		"image_url": "",
+		"image": ""
+	}
+}]
