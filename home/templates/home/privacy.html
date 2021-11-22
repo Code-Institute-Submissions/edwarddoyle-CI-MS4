@@ -1,9 +1,24 @@
 {% extends "base.html" %}
 {% load static %}
+{% block additional_css %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+{% endblock %}
+
+
+{% block page_header %}
+<section class="masthead" role="img" aria-label="Image Description">
+   <h1>
+       {{ request.resolver_match.url_name }}
+   </h1>
+     <button>
+       BREADCRUMBS
+     </button>
+ </section>
+{% endblock %}
+
 {% block content %}
-<section class="terms">
-    
-<h2 style="text-align: center;"><b>PRIVACY POLICY</b></h2>
+<section class="terms">   
+
 <p>Effective date: 2021-11-01</p>
 <ol>
 

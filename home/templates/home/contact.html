@@ -3,36 +3,40 @@
 {% block additional_js %}
 <script src="{% static 'js/smtp.js' %}" async></script>
 {% endblock %}
-     <!-- {% url 'shop' %} -->
-{% block page_header %}
+{% block additional_css %}
 
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
 {% endblock %}
-<!-- <div class="video-holder header-img">
-    <img src="{% static 'img/flowers.jpg' %}" alt="header background" />
- </div>
- <header class="homeHeader wOVideo">
-    <section class="header-content ">
-       <h1>CONTACT</h1>
-    </section>
- </header> -->
+
+
+{% block page_header %}
+<section class="masthead" role="img" aria-label="Image Description">
+   <h1>
+       {{ request.resolver_match.url_name }}
+   </h1>
+     <button>
+       BREADCRUMBS
+     </button>
+ </section>
+{% endblock %}
+
+
 {% block content %}
 <section class="contact">
-   <header class="sectionHeader">
-      <h2>Contact</h2>
-   </header>
+
    <div class="contactContent">
       <div>
-         <a class="logo"><img  width="200"
-            alt="OMC CLeanroom Logo">OMC Cleanroom Ltd</a>           
+         <a class="logo"><img src="{% static 'img/logo.svg' %}"  width="200"
+            alt="KCC Logo">Kilmacow Community Cleanup</a>           
          <p>Feel free to get in touch using any of the methods below, or please fill out the contact form
             and someone will be in touch
          </p>
          <ol>
-            <li><i class="icon-address"></i><a href="https://goo.gl/maps/fbgafgvRnakx6SSL8" target="_blank">Ballysimon Road,
-               Limerick, V94 Y2C1, Ireland</a>
+            <li><i class="icon-address"></i><a href="https://goo.gl/maps/9qtGHBhNHKh1PEat9" target="_blank">Upper Street,
+               Kilmacow, Kilkenny, Ireland</a>
             </li>
-            <li><i class="icon-phone"></i><a href="tel:+353 (0)61 419 333">+353 (0)61 419 333</a></li>
-            <li><i class="icon-email"></i><a href = "mailto:info@omccleanroom.com?subject = Website Query">info@omccleanroom.com</a></li>
+            <li><i class="icon-phone"></i><a href="tel:+353 (0)876528409">+353 (0)87 652 8409</a></li>
+            <li><i class="icon-email"></i><a href = "mailto:edward@paul.doyle@gmail.com?subject = KCC Shop">info@KCC.com</a></li>
             <li>
                <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-describedby="new-window-message"
                   aria-label="Facebook">
@@ -76,6 +80,10 @@
       </div>
    </div>
 </section>
+{% endblock %}
+
+{% block delayed_js %}
+<script src="{% static 'js/contact.js' %}" type="module" async></script>
 {% endblock %}
 
 
