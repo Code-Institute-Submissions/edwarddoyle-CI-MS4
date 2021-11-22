@@ -1,39 +1,44 @@
 {% extends "base.html" %}
+
 {% load static %}
-     <!-- {% url 'shop' %} -->
+
+
+
+
+{% block additional_css %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+{% endblock %}
+
+
 {% block page_header %}
-<div class="video-holder">
-    <video src="{% static 'video/header.mp4' %}" autoplay loop playsinline muted></video>
- </div>
- <header class="homeHeader wVideo">
-    <section class="header-content">
-       <h1>Kilmacow Community Clean Up</h1>
-       <p>
-           OMC Cleanroom provide stainless steel fabricated products, cleanroom furniture, stainless steel drainage
-          products, specialist chemical cleaning and surface treatment services to the Biomedical and Pharmaceutical
-          industries.
-       </p>
-  
-       <div class="buttonRow"><a href=""><button class="button" data-link="about">                        
-          Shop</button></a>
-          <a href="{% url 'contact' %}"><button class="button flip" data-link="contact">Contact Us</button></a>
-          
-       </div>
-    </section>
- </header>
+<section class="masthead" role="img" aria-label="Image Description">
+   <h1>
+       {{ request.resolver_match.url_name }}
+   </h1>
+     <button>
+       BREADCRUMBS
+     </button>
+ </section>
 {% endblock %}
 
 {% block content %}
-<section class="welcome">
-    <h1>Kilmacow Community Clean Up</h1>
-    <p>
-        OMC Cleanroom provide stainless steel fabricated products, cleanroom furniture, stainless steel drainage
-       products, specialist chemical cleaning and surface treatment services to the Biomedical and Pharmaceutical
-       industries.
-    </p>
-    <div class="buttonRow"><button class="button" data-link="about">                        
-       Learn More</button>
-       <button class="button flip" data-link="contact">Contact Us</button>
-    </div>
- </section>
+<section class="products">
+<section class="productsGrid">
+{% for product in products %}
+<a href="{% url 'product_detail' product.id %}"> 
+<div class="productCard regular-shadow">
+   <img src="{% static 'img/hero.jpg' %}"/>
+   <p>{{ product.name }}</p>
+   <i>{{ product.category }}</i>
+   <p><span>€{{ product.price }}</span></p>
+</div>
+</a>
+{% endfor %}
+
+
+</section>
+</section>
+
+
 {% endblock %}

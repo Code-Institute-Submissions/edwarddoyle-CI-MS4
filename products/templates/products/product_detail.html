@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% block additional_js %}
+<script src="{% static 'js/smtp.js' %}" async></script>
+{% endblock %}
+     <!-- {% url 'shop' %} -->
+{% block page_header %}
+
+{% endblock %}
+   <!-- <header class="sectionHeader">
+      <h2>Contact</h2>
+   </header> -->
+{% block content %}
+<section class="contact">
+
+   <div class="contactContent">
+      <div>
+         <a class="logo"><img src="{% static 'img/logo.svg' %}"  width="200"
+            alt="KCC Logo">{{ product.name }}</a>           
+         <p>Feel free to get in touch using any of the methods below, or please fill out the contact form
+            and someone will be in touch
+         </p>
+         <ol>
+            <li><i class="icon-address"></i><a href="https://goo.gl/maps/9qtGHBhNHKh1PEat9" target="_blank">Upper Street,
+               Kilmacow, Kilkenny, Ireland</a>
+            </li>
+            <li><i class="icon-phone"></i><a href="tel:+353 (0)876528409">+353 (0)87 652 8409</a></li>
+            <li><i class="icon-email"></i><a href = "mailto:edward@paul.doyle@gmail.com?subject = KCC Shop">info@KCC.com</a></li>
+            <li>
+               <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-describedby="new-window-message"
+                  aria-label="Facebook">
+               <i class="icon-facebook"></i>
+               </a>
+               <a href="https://www.twitter.com" target="_blank" rel="noopener" aria-describedby="new-window-message"
+                  aria-label="Twitter">
+               <i class="icon-twitter"></i>
+               </a>
+               <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-describedby="new-window-message"
+                  aria-label="Instagram">
+               <i class="icon-instagram"></i>
+               </a>
+            </li>
+         </ol>
+      </div>
+      <!-- <div>
+         <form id="contactForm" class="regular-shadow slideInRight" autocomplete="off">
+            <ol>
+               <li>
+                  <label for="name">Name</label>
+                  <input type="text" name="name" id="name" placeholder="&#xe90d;" autocomplete="off" autocorrect="off"
+                     autocapitalize="none" spellcheck="false" required />
+                  <p></p>
+               </li>
+               <li>
+                  <label for="email">Email</label>
+                  <input type="email" name="email" id="email" placeholder="&#xe905;" autocomplete="off" required />
+               </li>
+               <li>
+                  <label for="message">Message</label>
+                  <textarea form="contactForm" type="text" name="message" id="message" placeholder="&#xe90c;" rows="4"
+                     wrap="soft" required></textarea>
+                  <p class="formMsg"></p>
+               </li>
+               <li>
+                  <button type="submit">SUBMIT</button>
+               </li>
+            </ol>
+         </form>
+      </div> -->
+   </div>
+</section>
+{% endblock %}
+
+{% block delayed_js %}
+<script src="{% static 'js/contact.js' %}" type="module" async></script>
+{% endblock %}
+
