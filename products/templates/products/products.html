@@ -20,7 +20,20 @@
        BREADCRUMBS
      </button>
  </section>
+ <section class="searchBar">
+   <form id="searchProducts" method="GET" action="{% url 'products' %}">      
+      <input type="search" class="filter" name="search" id="search" placeholder="&#xe909;" autocomplete="off" autocorrect="off"
+      autocapitalize="none" spellcheck="false"/>
+      <select form="searchProducts" class="filter" name="select">
+         <option value="" selected disabled hidden>Category</option>
+         {% for category in categories %}
+           <option value="{{ category }}">{{ category }}</option>
+         {% endfor %}
+      </select>
+   </form>
+</section>
 {% endblock %}
+
 
 {% block content %}
 <section class="products">
