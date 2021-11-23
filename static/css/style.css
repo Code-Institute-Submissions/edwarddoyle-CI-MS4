@@ -598,9 +598,13 @@ section.contact {
 }
 
 form {
-  background: var(--surface2);
+  /*  */
   padding: 2rem;
   border-radius: 0.5rem;
+}
+
+#contactForm {
+  background: var(--surface2);
 }
 
 form p.lightText {
@@ -646,11 +650,14 @@ textarea {
   justify-content: end;
   background: var(--surface1);
 }
-#searchProducts {     display: flex;
+.searchProducts {     display: flex;
   justify-content: space-evenly;
   /* width: 50%; */
   align-items: flex-end;
   background: var(--surface1);
+  padding: 0;
+}
+.searchProducts > form {
   padding: 0;
 }
 input.filter, select.filter {

@@ -1,7 +1,11 @@
 section.products {
     height: auto;
-    padding: 3rem 1rem;
+    padding: 1rem;
     width: 100vw;  
+  }
+  
+  section.products > p{
+    margin: 1rem;
   }
   
   .productsGrid {
