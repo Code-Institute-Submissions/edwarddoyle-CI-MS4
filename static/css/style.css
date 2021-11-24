@@ -260,6 +260,11 @@ button {
   color: var(--text2);
   cursor: pointer;
 }
+
+.column {
+  flex-direction: column;
+}
+
 /*    ----- END Page Structure -----    */
 
 /*    ----- NAV BAR -----    */
@@ -496,29 +501,7 @@ section.welcome {
   margin-top: 20vh;
 }
 
-/* .masthead {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  width: 100%;
-  height: 100vh; 
-  overflow: hidden;
-  background-size: cover !important;
-  background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 0%, rgba(255,255,255,0.65) 100%), url(qijin-xu.png) no-repeat center center scroll;
-}
 
-.masthead h1 {
-  font-style: normal;
-  font-weight: bold;
-  color: #eee;
-  font-size: 11vmin;
-  letter-spacing: 0.03em;
-  line-height: 1;
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
-  margin-bottom: 41px;
-} */
 
 /*    ----- END HOME PAGE -----    */
 
@@ -554,7 +537,7 @@ section.contact {
 }
 
 
-.contactContent {
+.pageContent {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -563,7 +546,7 @@ section.contact {
 
 
 
-.contactContent div:not(.spinner) {
+.pageContent div:not(.spinner, .stepperInput) {
   flex: 0 1 450px;
   min-height: 300px;
   margin: 0.5rem;
@@ -573,22 +556,38 @@ section.contact {
   align-self: stretch;
 }
 
-.contactContent div > *:not(.closebutton) {
+
+
+.stepperInput{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
+.pageContent div > *:not(.closebutton) {
   margin: 1rem 0;
   justify-content: space-between;
   display: flex;
   flex-direction: column;
 }
 
-.contactContent div li {
+.pageContent div li {
   margin: 1rem;
   justify-content: flex-start;
   align-items: baseline;
   display: flex;
 }
 
-.contactContent i:hover,
-.contactContent a:hover {
+.pageContent.productContent div li {
+  margin: .25rem;
+  justify-content: flex-start;
+  align-items: baseline;
+  display: flex;
+}
+
+.pageContent i:hover,
+.pageContent a:hover {
   color: var(--brand);
 }
 
@@ -597,7 +596,7 @@ section.contact {
   color: var(--brand);
 }
 
-form {
+.form {
   /*  */
   padding: 2rem;
   border-radius: 0.5rem;
@@ -607,27 +606,30 @@ form {
   background: var(--surface2);
 }
 
-form p.lightText {
+.form p.lightText {
   color: var(--brand);
   font-weight: bold;
 }
 
-form ol {
+.form ol {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-form li {
+.form li {
   display: flex;
   flex-flow: row wrap;
 }
 
-form li * {
+.form li * {
   width: 100%;
 }
-
-input,
+input.input.stepperInput__input {
+  margin: 0 0.5rem;
+  padding: 1rem;
+}
+input:not(.input.stepperInput__input),
 select,
 textarea {
   padding: 0rem 0.5rem;
@@ -653,15 +655,21 @@ textarea {
 .searchProducts {     display: flex;
   justify-content: space-evenly;
   /* width: 50%; */
+  flex-wrap: wrap;
   align-items: flex-end;
   background: var(--surface1);
   padding: 0;
 }
 .searchProducts > form {
-  padding: 0;
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    /* align-items: center; */
+    justify-content: center;
 }
 input.filter, select.filter {
-  width: 250px;
+  width: 250px !important;
   margin: 1rem;
 }
 
@@ -686,7 +694,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-form p {
+.form p {
   align-items: baseline;
   justify-content: flex-start;
   font-size: 0.75rem;
