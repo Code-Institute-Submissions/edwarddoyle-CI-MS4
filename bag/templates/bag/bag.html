@@ -20,50 +20,93 @@
 
 
 {% block content %}
-<section class="products">
-    <table class="table" id="stockTable" data-cols-width="20,30,10,20,10,10">
+<section class="bag">
+    <table class="table" id="stockTable">
     {% if bag_items %}
-    <tr class="row head gap" style="background: var(--brand)"><td></td></tr>
-    <tr class="row head tableHead" data-height="42.5"><td data-f-bold="true" data-a-v="middle" data-f-sz="14" data-underline="true"><h3>Shopping Bag</h3></td></tr>
-    <tr class="row head tableHead" >
-      <td class="cell" data-f-bold="true" data-a-h="center" data-fill-color="00ebebeb">In Stock</td>  
-      <td class="cell" data-f-bold="true" data-a-h="center" data-fill-color="00ebebeb">Item</td>
-      <td class="cell" data-f-bold="true" data-a-h="center" data-fill-color="00ebebeb">Price</td>
-      <td class="cell" data-f-bold="true" data-a-h="center" data-fill-color="00ebebeb">Quantity</td>
-      <td class="cell" data-f-bold="true" data-a-h="center" data-fill-color="00ebebeb">Total</td>
+    <!-- <tr class="row tableHead"><h3>Shopping Bag</h3></td></tr> -->
+    <tr class="row tableHead" >
+      <td class="celltitle">{{ item.product.name }}</td>
+      <td class="cell"></td>  
+      <td class="cell">Item</td>
+      <td class="cell">Price</td>
+      <td class="cell">Quantity</td>
+      <td class="cell">Sub Total</td>
     </tr>
     {% for item in bag_items %}
     <tr class="row tableBody">  
-        <td class="cell" data-t="n" data-a-h="right" data-num-fmt="0" >
-            <div class="title" >In Stock</div>
-            <div class="content number" >image</div>
+      <td class="celltitle">{{ item.product.name }}</td>
+        <td class="cell" >
+            <div class="title mobileHidden">item</div>
+            <div class="content number">image</div>
           </td>  
-         <td class="cell" data-a-wrap="true">
-           <div class="title" data-exclude="true">Part No</div>
+         <td class="cell mobileHidden" >
+           <div class="title">{{ item.product.name }}</div>
            <div class="content">{{ item.product.name }}</div>
          </td>
-         <td class="cell" data-a-wrap="true">
-           <div class="title" data-exclude="true">Part Description</div>
+         <td class="cell" >
+           <div class="title">Price Each</div>
            <div class="content">{{ item.product.price }}</div>
          </td>
          <td class="cell">
-           <div class="title" data-exclude="true">UOM</div>
+           <div class="title">Quantity </div>
            <div class="content">{{ item.quantity }}</div>
          </td>
-         <td class="cell" data-t="n" data-a-h="right" data-num-fmt="0">
-         <div class="title" >Kanban Level</div>
-         <div class="content number" >{{ item.product.price }}</div>
+         <td class="cell">
+         <div class="title">Sub Total</div>
+         <div class="content number">{{ item.sub_total }}</div>
        </td>
-
      </tr>
     {% endfor %}
+    <tr class="row tableBody totals">
+      <td class="cell"></td><td class="cell"></td><td class="cell"></td>
+      <td class="cell"><h6><strong>Sub Total</strong></h6></td>
+      <td class="cell">
+        <div class="title">Sub Total</div>
+        <div class="content number" ><h6><strong>{{ total|floatformat:2 }}</strong></h6></div>
+      </td>
+    </tr>
+    <tr class="row tableBody totals">
+      <td class="cell"></td><td class="cell"></td><td class="cell"></td>
+      <td class="cell"><h6><strong>Delivery</strong></h6></td>
+      <td class="cell">
+        <div class="title">Delivery</div>
+        <div class="content number" ><h6><strong>{{ delivery|floatformat:2 }}</strong></h6></div>
+      </td>
+    </tr>
+    {% if free_delivery_delta == 0 %}
+
+      <tr class="row tableBody totals">
+                <td class="cell"></td><td class="cell"></td><td class="cell"></td>
+          <td class="cell "></td>
+   
+        <td class="cell">
+
+                 Spend €{{ free_delivery_delta }} more for free delivery!
+          
+        </td>
+      </tr>
+
+{% endif %}
+    <tr class="row tableBody totals">
+      <td class="cell"></td><td class="cell"></td><td class="cell"></td>
+      <td class="cell "><h6><strong>Grand Total</strong></h6></td>
+      <td class="cell">
+        <div class="title">Grand Total</div>
+        <div class="content number" ><h6><strong>{{ grand_total|floatformat:2 }}</strong></h6></div>
+      </td>
+    </tr>
+  
+
 </table>
 
     {% else %}
     {% endif %}
 
 </table>
-
+<div class="buttonRow fEnd">
+  <a href="{% url 'products' %}"><button class="button flip" style="margin-right: .5rem; text-align: center;"><i class="icon-email" style="margin-right: .5rem;"></i>Keep Shopping</button></a>
+  <button type="submit" class="button button--addOnRight"><i class="icon-basket" style="margin-right: .5rem;"></i>Checkout</button>
+</div>
 
 
 {% endblock %}

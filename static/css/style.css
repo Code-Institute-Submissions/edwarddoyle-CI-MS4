@@ -265,6 +265,10 @@ button {
   flex-direction: column;
 }
 
+.fEnd {
+  justify-content: flex-end !important;
+}
+
 /*    ----- END Page Structure -----    */
 
 /*    ----- NAV BAR -----    */
@@ -492,6 +496,7 @@ video {
   flex-direction: row;
   justify-content: flex-start;
   align-items: baseline;
+  margin-top: 1rem;
 }
 .buttonRow button:first-child {
   margin-right: 1rem;
@@ -715,48 +720,11 @@ section.terms b {
 }
 
 /*    ----- END Terms PAGE -----    */
-/*    ----- Products PAGE -----    */
-/* 
-section.products {
-  height: auto;
-  padding: 3rem 1rem;
-  width: 100vw;
+/*    ----- Bag PAGE -----    */
+
+.bag {
+  margin: 2rem;
 }
-.productsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  grid-gap: 1rem;
-}
-
-.productCard {
-
-    padding: 1rem 1rem;
-    text-align: center;
-    font-size: 1.2rem;
-    background: var(--surface2);
-    color: var(--text2);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-}
-.productCard *{
-  margin: .5rem 0;
-}
-
-.productCard img {
-  width: 100%;
-}
-
-.productCard i {
-  font-size: small;
-}
-
-.productCard span {
-  color: var(--brand);
-} */
-
-
 
 
 /*    ----- END Products PAGE -----    */

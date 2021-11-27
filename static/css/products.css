@@ -1,7 +1,8 @@
 section.products {
     height: auto;
     padding: 1rem;
-    width: 100vw;  
+    width: 100vw; 
+     
   }
   
   section.products > p{
