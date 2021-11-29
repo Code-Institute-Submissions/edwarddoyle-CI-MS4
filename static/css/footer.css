@@ -48,25 +48,6 @@ ul {
     padding: 1.25rem;
     min-width: 12.5rem;
   }
-  
-  /* Footer main | Newsletter form */
-  /* form {
-    display: flex;
-    flex-wrap: wrap;
-  } */
-  /* input[type="email"] {
-    border: 0;
-    padding: 0.625rem;
-    margin-top: 0.3125rem;
-  } */
-  /* input[type="submit"] {
-    background-color: var(--brand);
-    color: #fff;
-    cursor: pointer;
-    border: 0;
-    padding: 0.625rem 0.9375rem;
-    margin-top: 0.3125rem;
-  } */
   /* Footer social */
   .ft-social {
     padding: 0 1.875rem 1.25rem;

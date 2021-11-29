@@ -1,110 +1,117 @@
 /* --- TABLE --- */
 .table {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-    width: inherit;
-    background-color: var(--surface1);
-    border-collapse: collapse;    
-  }  
-  tbody {
-    width: 100%;    
-  }  
-  tr {
-    width: 100%;
-    display: flex;
-    border-bottom: thin solid var(--surface1);     
-  }  
-  td {
-    display: flex;    
-    box-sizing: border-box;
-    flex-grow: 1;
-    padding: 0.8em 1.2em;
-    overflow: hidden;
-    list-style: none;
-    align-items: center;
-    justify-content: flex-start;
-    /* border: 1px solid var(--brand);     */
-  }  
-  .tableHead {
-    background-color: var(--surface1);    
-  }  
-  .tableBody {
-    background-color: var(--surface2);
-  }  
-  td > div.title, td.celltitle{
-    display: none;
-  }
-  tr td:nth-child(n+3) {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  width: inherit;
+  background-color: var(--surface1);
+  border-collapse: collapse;
+}
+
+tbody {
+  width: 100%;
+}
+
+tr {
+  width: 100%;
+  display: flex;
+  border-bottom: thin solid var(--surface1);
+}
+
+td {
+  display: flex;
+  box-sizing: border-box;
+  flex-grow: 1;
+  padding: 0.8em 1.2em;
+  overflow: hidden;
+  list-style: none;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.tableHead {
+  background-color: var(--surface1);
+}
+
+.tableBody {
+  background-color: var(--surface2);
+}
+
+td>div.title,
+td.celltitle {
+  display: none;
+}
+
+tr td:nth-child(n+3) {
   width: 10%;
   justify-content: flex-end;
   text-align: right;
-  }
-  
-tr td:nth-child(-n+2) {
-    width: 25%;  
 }
-  
-  @media screen and (max-width: 768px) {
-  
-    table  {
-      display: block;
-      width: 100%;
-      padding: 1em;
-      box-shadow: none;
-    }
-      
-      tr {
-        box-sizing: border-box;
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 2em;
-        box-shadow: 0 0 40px rgba(0,0,0,0.2);
-      }
-  
-        
-        td {
-          width: 100% !important;
-          display: flex;
-          align-items: center;
-        }
-  
-          td > div.title {
-            display: flex;
-            flex: 1;
-            color: var(--brand);
-            font-weight: 700;
-            border-right: 1px solid #ccc;
-            align-items: flex-start;
-            justify-content: flex-start;
-          }
-  
-          td > div.content {
-            display: flex;
-            flex: 1;
-            padding-left: .5rem; 
-            align-items: flex-end;
-            justify-content: flex-end;
-            text-align: right;
-          }
-    
-          td.celltitle { 
-          display: block;
-          background-color: var(--brand);
-          color: white;
-          font-weight: 700;
-          order: -1;
-      }
-      
-      .tableHead, .mobileHidden {
-        display: none;
-      }
 
-      .row.tableBody.totals td:nth-child(-n+4){
-        display: none;
-      }
-  
+tr td:nth-child(-n+2) {
+  width: 25%;
+}
+
+@media screen and (max-width: 768px) {
+
+  table {
+    display: block;
+    width: 100%;
+    padding: 1em;
+    box-shadow: none;
   }
-  
+
+  tr {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  }
+
+
+  td {
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+  }
+
+  td>div.title {
+    display: flex;
+    flex: 1;
+    color: var(--brand);
+    font-weight: 700;
+    border-right: 1px solid #ccc;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  td>div.content {
+    display: flex;
+    flex: 1;
+    padding-left: .5rem;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  td.celltitle {
+    display: block;
+    background-color: var(--brand);
+    color: white;
+    font-weight: 700;
+    order: -1;
+  }
+
+  .tableHead,
+  .mobileHidden {
+    display: none;
+  }
+
+  .row.tableBody.totals td:nth-child(-n+4) {
+    display: none;
+  }
+
+}

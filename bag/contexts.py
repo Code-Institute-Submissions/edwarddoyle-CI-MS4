@@ -21,7 +21,6 @@ def bag_contents(request):
             'quantity': quantity,
             'product': product,
             'sub_total': sub_total
-        
         })
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
