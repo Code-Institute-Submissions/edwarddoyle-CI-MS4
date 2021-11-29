@@ -27,7 +27,7 @@
       <td class="cell">Item</td>
       <td class="cell">Price</td>
       <td class="cell">Quantity</td>
-      <td class="cell">Sub Total  {{ bag_items }}</td>
+      <td class="cell">Sub Total</td>
     </tr>
     {% for item in bag_items %}
     <tr class="row tableBody">  
@@ -112,7 +112,7 @@
 </table>
 <div class="buttonRow fEnd">
   <a href="{% url 'products' %}"><button class="button flip" style="margin-right: .5rem; text-align: center;"><i class="icon-email" style="margin-right: .5rem;"></i>Keep Shopping</button></a>
-  <button type="submit" class="button button--addOnRight"><i class="icon-basket" style="margin-right: .5rem;"></i>Checkout</button>
+  <a href="{% url 'checkout' %}"><button type="submit" class="button button--addOnRight"><i class="icon-basket" style="margin-right: .5rem;"></i>Checkout</button></a>
 </div>
 
 

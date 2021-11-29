@@ -4,13 +4,15 @@
 {% block additional_css %}
 <link rel="stylesheet" href="{% static 'css/header.css' %}">
 <link rel="stylesheet" href="{% static 'css/table.css' %}">
-<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'css/stripe.css' %}">
 {% endblock %}
+
+
 
 {% block page_header %}
 <section class="masthead" role="img" aria-label="Image Description">
    <h1>
-       Shopping Bag
+       Checkout
    </h1>
      <button>
        BREADCRUMBS
@@ -20,104 +22,142 @@
 
 {% block content %}
 <section class="bag">
-    <table class="table" id="stockTable">
-    {% if bag_items %} 
-    <tr class="row tableHead" >
-      <td class="celltitle">{{ item.product.name }}</td>
-      <td class="cell"></td>  
-      <td class="cell">Item</td>
-      <td class="cell">Price</td>
-      <td class="cell">Quantity</td>
-      <td class="cell">Sub Total  {{ bag_items }}</td>
-    </tr>
-    {% for item in bag_items %}
-    <tr class="row tableBody">  
-      <td class="celltitle">{{ item.product.name }}</td>
-        <td class="cell mobileHidden" >
-            <div class="title">item</div>
-            <div class="content number">image</div>
-          </td>  
-         <td class="cell mobileHidden" >
-           <div class="title">{{ item.product.name }}</div>
-           <div class="content">{{ item.product.name }}</div>
-         </td>
-         <td class="cell" >
-           <div class="title">Price Each</div>
-           <div class="content">{{ item.product.price }}</div>
-         </td>
-         <td class="cell">
-           <div class="title">Quantity </div>
-           <div class="content fEnd includesStepper">
- 
-              <div class="stepperInput">
-                           <form method="POST" id="qtyForm" action="{% url 'modify_bag' item.item_id %}">
-              {% csrf_token %}
-                <button id="step_down" class="button button--addOnLeft">-</button>
 
-                <input type="text" name="quantity" min="0" value="{{ item.quantity }}" 
-                class="stepperInput__input"
-                data_item_id="{{ item.item_.id }}" id="id_qty_{{ item.item_id }}"/>
-                
-                <button id="step_up" class="button button--addOnRight">+</button>
-              </form>
-              </div>
-             <!-- {{ item.quantity }} -->
-            
-            </div>
-         </td>
-         <td class="cell">
-         <div class="title">Sub Total</div>
-         <div class="content number">{{ item.sub_total }}</div>
-       </td>
-     </tr>
-    {% endfor %}
-    <tr class="row tableBody totals">
-      <td class="cell"></td><td class="cell"></td><td class="cell"></td>
-      <td class="cell"><h6><strong>Sub Total</strong></h6></td>
-      <td class="cell">
-        <div class="title">Sub Total</div>
-        <div class="content number" ><h6><strong>{{ total|floatformat:2 }}</strong></h6></div>
-      </td>
-    </tr>
-    <tr class="row tableBody totals">
-      <td class="cell"></td><td class="cell"></td><td class="cell"></td>
-      <td class="cell"><h6><strong>Delivery</strong></h6></td>
-      <td class="cell">
-        <div class="title">Delivery</div>
-        <div class="content number" ><h6><strong>{{ delivery|floatformat:2 }}</strong></h6></div>
-      </td>
-    </tr>
-    {% if free_delivery_delta > 0 %}
-      <tr class="row tableBody totals">
-                <td class="cell"></td><td class="cell"></td><td class="cell"></td>
-          <td class="cell "></td>   
-          <td class="cell">
-                 Spend €{{ free_delivery_delta }} more for free delivery!          
-          </td>
+  <div class="pageContent">
+    <!-- div 1-->
+    <div>
+      <table class="table" id="orderTable">
+        <tr class="row head tableHead"><td><h3>Order Summary</h3></td></tr>
+      {% if bag_items %} 
+      <tr class="row tableHead" >
+        <td class="celltitle">{{ item.product.name }}</td>
+        <td class="cell">Item</td>
+        <td class="cell">Price</td>
+        <td class="cell">Quantity</td>
+        <td class="cell">Sub Total </td>
       </tr>
-    {% endif %}
-    <tr class="row tableBody totals">
-      <td class="cell"></td><td class="cell"></td><td class="cell"></td>
-      <td class="cell "><h6><strong>Grand Total</strong></h6></td>
-      <td class="cell">
-        <div class="title">Grand Total</div>
-        <div class="content number" ><h6><strong>{{ grand_total|floatformat:2 }}</strong></h6></div>
-      </td>
-    </tr>
-</table>
-
+      {% for item in bag_items %}
+      <tr class="row tableBody">  
+        <td class="celltitle">{{ item.product.name }}</td>
+           <td class="cell mobileHidden" >
+             <div class="title">{{ item.product.name }}</div>
+             <div class="content">{{ item.product.name }}</div>
+           </td>
+           <td class="cell" >
+             <div class="title">Price Each</div>
+             <div class="content">{{ item.product.price }}</div>
+           </td>
+           <td class="cell">
+             <div class="title">Quantity </div>
+             <div class="content">{{ item.quantity }}
+    
+              </div>
+           </td>
+           <td class="cell">
+           <div class="title">Sub Total</div>
+           <div class="content number">{{ item.sub_total }}</div>
+         </td>
+       </tr>
+      {% endfor %}
+      <tr class="row tableBody totals">
+        <td class="cell"></td><td class="cell"></td><td class="cell"></td>
+        <td class="cell"><h6><strong>Sub Total</strong></h6></td>
+        <td class="cell">
+          <div class="title">Sub Total</div>
+          <div class="content number" ><h6><strong>{{ total|floatformat:2 }}</strong></h6></div>
+        </td>
+      </tr>
+      <tr class="row tableBody totals">
+        <td class="cell"></td><td class="cell"></td><td class="cell"></td>
+        <td class="cell"><h6><strong>Delivery</strong></h6></td>
+        <td class="cell">
+          <div class="title">Delivery</div>
+          <div class="content number" ><h6><strong>{{ delivery|floatformat:2 }}</strong></h6></div>
+        </td>
+      </tr>
+      {% if free_delivery_delta > 0 %}
+        <tr class="row tableBody totals">
+                  <td class="cell"></td><td class="cell"></td><td class="cell"></td>
+            <td class="cell "></td>   
+            <td class="cell">
+                   Spend €{{ free_delivery_delta }} more for free delivery!          
+            </td>
+        </tr>
+      {% endif %}
+      <tr class="row tableBody totals">
+        <td class="cell"></td><td class="cell"></td><td class="cell"></td>
+        <td class="cell "><h6><strong>Grand Total</strong></h6></td>
+        <td class="cell">
+          <div class="title">Grand Total</div>
+          <div class="content number" ><h6><strong>{{ grand_total|floatformat:2 }}</strong></h6></div>
+        </td>
+      </tr>
+    </table>
+    
+      {% else %}
+      <tr class="row tableHead"><h2>Your Bag is Empty!</h2></tr>
+      {% endif %}
+    
+    </table>
+    </div>
+    <!-- div 2-->
+    <div>
+    <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+      {% csrf_token %}
+      
+      <fieldset>
+        <legend>Details</legend>
+        {{ order_form.full_name | as_crispy_field }}
+        {{ order_form.email | as_crispy_field }}
+      </fieldset>
+      <fieldset>
+        <legend>Delivery</legend>
+        {{ order_form.phone | as_crispy_field }}
+        {{ order_form.country | as_crispy_field }}
+        {{ order_form.postcode | as_crispy_field }}
+        {{ order_form.town_or_city | as_crispy_field }}
+        {{ order_form.address_line_1 | as_crispy_field }}
+        {{ order_form.address_line_2 | as_crispy_field }}
+        {{ order_form.county | as_crispy_field }} 
+      </fieldset>
+      {% if user.is_authenticated %}
+    <label>Save address to profile</label>
+    <input type="checkbox" checked>
     {% else %}
-    <tr class="row tableHead"><h2>Your Bag is Empty!</h2></tr>
-    {% endif %}
+    
+    <li><a href="{% url 'account_login' %}">Sign In</a></li>
+    <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+      {% endif %}
+      <fieldset>
+        <legend>Payment</legend>
+          <div id="card-element"></div>
+          <div id="card-error"></div>
+      </fieldset>
 
-</table>
-<div class="buttonRow fEnd">
-  <a href="{% url 'products' %}"><button class="button flip" style="margin-right: .5rem; text-align: center;"><i class="icon-email" style="margin-right: .5rem;"></i>Keep Shopping</button></a>
-  <button type="submit" class="button button--addOnRight"><i class="icon-basket" style="margin-right: .5rem;"></i>Checkout</button>
-</div>
+    
+      
+      </form>
 
+    
+    </div>
+    
+    </div>
+      <div class="buttonRow fEnd">
+        <a href="{% url 'products' %}"><button class="button flip" style="margin-right: .5rem; text-align: center;"><i class="icon-email" style="margin-right: .5rem;"></i>Update Bag</button></a>
+        <button type="submit" class="button button--addOnRight"><i class="icon-basket" style="margin-right: .5rem;"></i>Pay Now</button>
+      </div>
+</section>
+{% endblock %}
+
+
+
+
+{% block delayed_js %}
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ stripe_public_key|json_script:"id_stripe_client_secret" }}
+
+<script src="{% static 'js/stripeElements.js' %}"></script>
 
 {% endblock %}
-</section>
-
 
