@@ -1,7 +1,7 @@
 const key = document.querySelector('#id_stripe_public_key').text
-const secret = document.querySelector('#id_stripe_client_secret').text
+const secret = document.querySelector('#id_stripe_client_secret')
 const stripePublicKey = key.slice(1, -1)
-const stripeClientSecret = secret.slice(1, -1)
+const stripeClientSecret = secret.text.slice(1, -1)
 
 
 const stripe = Stripe(stripePublicKey)
@@ -29,7 +29,7 @@ card.addEventListener('change', (e) => {
 
 var form = document.getElementById('payment-form');
 
-form.addEventListener('submit', function (ev) {
+submitButton.addEventListener('click', function (ev) {
     ev.preventDefault();
     card.update({
         'disabled': true
@@ -56,6 +56,7 @@ form.addEventListener('submit', function (ev) {
         } else {
             // The payment has been processed!
             if (result.paymentIntent.status === 'succeeded') {
+                // console.log(`${paymentIntent.status}`)
                 form.submit()
             }
         }
