@@ -8,12 +8,9 @@
 
 {% block page_header %}
 <section class="masthead" role="img" aria-label="Image Description">
-   <h1>
+   <h2>
        Shopping Bag
-   </h1>
-     <button>
-       BREADCRUMBS
-     </button>
+   </h2>
 </section>
 {% endblock %}
 
@@ -111,8 +108,8 @@
 
 </table>
 <div class="buttonRow fEnd">
-  <a href="{% url 'products' %}"><button class="button flip" style="margin-right: .5rem; text-align: center;"><i class="icon-email" style="margin-right: .5rem;"></i>Keep Shopping</button></a>
-  <a href="{% url 'checkout' %}"><button type="submit" class="button button--addOnRight"><i class="icon-basket" style="margin-right: .5rem;"></i>Checkout</button></a>
+  <a href="{% url 'products' %}"><button class="button flip" style="margin-right: .5rem; text-align: center;"><i class="icon-basket" style="margin-right: .5rem;"></i>Keep Shopping</button></a>
+  <a href="{% url 'checkout' %}"><button type="submit" class="button button--addOnRight"><i class="icon-credit-card" style="margin-right: .5rem;"></i>Checkout</button></a>
 </div>
 
 

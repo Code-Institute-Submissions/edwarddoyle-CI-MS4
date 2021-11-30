@@ -16,7 +16,7 @@
     <link rel="mask-icon" href="{% static 'img/apple-mask-icon.svg' %}" color="#000000">
     <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
     {% endblock %}
-    <!-- add menifest -->
+
 
     {% block corecss %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -32,14 +32,14 @@
     {% block additional_js %}
     {% endblock %}
 
-
-
     {% block corejs %}
+
     {{ block.super }}
     <script src="{% static 'js/app.js' %}" type="module" async></script>
     <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
     <title>KCC {% block additional_title %}{% endblock %}</title>
+
   </head>
   <body>
  
@@ -50,116 +50,104 @@
           <i class="hamburger__icon"></i>
           <i class="hamburger__icon"></i>
         </label>
-        
+
         <input type="checkbox" id="menu-control" class="menu-control">
 
         <aside class="sidebar">
-<div class="sidebar__menu">
-  <a href="{% url 'home' %}">Home</a>
-          {% if request.user.is_authenticated %}
-          {% if request.user.is_superuser %}
-              <a href="">Product Management</a>
-          {% endif %}
-          <a href="" >My Account</a>
-          <a href="{% url 'account_logout' %}">Logout</a>
-      {% else %}
-          <a href="{% url 'account_signup' %}">Register</a>
-          <a href="{% url 'account_login' %}">Login</a>
-      {% endif %}  
+          <div class="sidebar__menu">
+            <a href="{% url 'home' %}">Home</a>
+            {% if request.user.is_authenticated %}
+            {% if request.user.is_superuser %}
+            <a href="">Product Management</a>
+            {% endif %}
+            <a href="">My Account</a>
+            <a href="{% url 'account_logout' %}">Logout</a>
+            {% else %}
+            <a href="{% url 'account_signup' %}">Register</a>
+            <a href="{% url 'account_login' %}">Login</a>
+            {% endif %}
             <a href="{% url 'contact' %}">Contact</a>
           </div>
-          
-          <label for="menu-control" class="sidebar__close"></label>         
-    
+
+          <label for="menu-control" class="sidebar__close"></label>
+
         </aside>
 
-        <a class="logo" href="{% url 'home' %}"><img class="slideInDown"
-           src="{% static 'img/logo.svg' %}" width="100" loading="lazy"
-           alt="KCC Logo" />
+        <a class="logo" href="{% url 'home' %}"><img class="slideInDown" src="{% static 'img/logo.svg' %}" width="100"
+            loading="lazy" alt="KCC Logo" />
         </a>
-       
-        <a href="{% url 'view_bag' %}">
-        <div class="shoppingCart slideInDown" ><i class="icon-basket"></i>
-        </a>
-       
-        
-        </div>
-     </nav>
 
-      
+        <a href="{% url 'view_bag' %}">
+          <div class="shoppingCart slideInDown"><i class="icon-basket"></i></div>
+        </a>
+
+
+        
+      </nav>
+
+
 
       {% block page_header %}
       {% endblock %}
-    <main>
+      <main>
 
-      {% block content %}
-      {% endblock %}
-    </main>
-    <button id="scrollToTop">	&#11165;</button>
-    <footer>
-      <!-- Footer main -->
-      <section class="ft-main">
-        <div class="ft-main-item">
-          <h2 class="ft-title">About</h2>
-          <ul>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">Customers</a></li>
-            <li><a href="#">Careers</a></li>
-          </ul>
-        </div>
-        <div class="ft-main-item">
-          <h2 class="ft-title">Resources</h2>
-          <ul>
-            <li><a href="#">Docs</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">eBooks</a></li>
-            <li><a href="#">Webinars</a></li>
-          </ul>
-        </div>
-        <div class="ft-main-item">
-          <h2 class="ft-title">Contact</h2>
-          <ul>
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Sales</a></li>
-            <li><a href="#">Advertise</a></li>
-          </ul>
-        </div>
-        <div class="ft-main-item">
-          <h2 class="ft-title">Stay Updated</h2>
-          <p>Subscribe to our newsletter to get our latest news.</p>
-          <form>
-            <input type="email" name="email" placeholder="Enter email address">
-            <input type="submit" value="Subscribe">
-          </form>
-        </div>
-      </section>
-    
-      <!-- Footer social -->
-      <section class="ft-social">
-        <ul class="ft-social-list">
-          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-          <li><a href="#"><i class="fab fa-github"></i></a></li>
-          <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-          <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-        </ul>
-      </section>
-    
-      <!-- Footer legal -->
-      <section class="ft-legal">
-        <ul class="ft-legal-list">
-          <li><a href="{% url 'terms' %}">Terms &amp; Conditions</a></li>
-          <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
-          <li id="copyright"></li>
-        </ul>
-      </section>
-    </footer>
-  
-   
+        {% block content %}
+        {% endblock %}
+      </main>
+      <button id="scrollToTop"> &#11165;</button>
+      <footer>
+        <!-- Footer main -->
+        <section class="ft-main">
+          <div class="ft-main-item">
+            <h2 class="ft-title">Pages</h2>
+            <ul>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'contact' %}">Contact</a></li>
+              <li><a href="{% url 'products' %}">Shop</a></li>
+            </ul>
+          </div>
+          <div class="ft-main-item">
+            <h2 class="ft-title">Products</h2>
+            <ul>
+              <li><a href="{% url 'products' %}?category=gifts">Gifts</a></li>
+              <li><a href="{% url 'products' %}?category=kits">Kits</a></li>
+              <li><a href="{% url 'products' %}?category=donations">Donations</a></li>
+            </ul>
+          </div>
+          <div class="ft-main-item">
+            <h2 class="ft-title"></h2>
+            <ul>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </div>
+          <div class="ft-main-item">
+            <h2 class="ft-title">Stay Updated</h2>
+            <p>Subscribe to our newsletter to get our latest news.</p>
+            <form>
+              <input type="email" name="email" placeholder="Enter email address">
+              <input type="submit" value="Subscribe">
+            </form>
+          </div>
+        </section>
 
+        <section class="ft-social">
+          <ul class="ft-social-list">
+            <li><a href="#"><i class="icon-facebook"></i></a></li>
+            <li><a href="#"><i class="icon-twitter"></i></a></li>
+            <li><a href="#"><i class="icon-instagram"></i></a></li>
+          </ul>
+        </section>
+        
+        <section class="ft-legal">
+          <ul class="ft-legal-list">
+            <li><a href="{% url 'terms' %}">Terms &amp; Conditions</a></li>
+            <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+            <li id="copyright"></li>
+          </ul>
+        </section>
+      </footer>
 
 
 {% block delayed_js %}

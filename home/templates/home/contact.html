@@ -1,33 +1,30 @@
 {% extends "base.html" %}
 {% load static %}
 {% block additional_js %}
+{{ block.super }}
 <script src="{% static 'js/smtp.js' %}" async></script>
 {% endblock %}
 {% block additional_css %}
-
 <link rel="stylesheet" href="{% static 'css/header.css' %}">
 {% endblock %}
 
 
 {% block page_header %}
 <section class="masthead" role="img" aria-label="Image Description">
-   <h1>
+   <h2>
        {{ request.resolver_match.url_name }}
-   </h1>
-     <button>
-       BREADCRUMBS
-     </button>
+   </h2>
  </section>
 {% endblock %}
 
 
 {% block content %}
-<section class="contact">
+<section >
 
    <div class="pageContent">
-      <div>
+      <div class="child">
          <a class="logo"><img src="{% static 'img/logo.svg' %}"  width="200"
-            alt="KCC Logo">Kilmacow Community Cleanup</a>           
+            alt="KCC Logo"></a>           
          <p>Feel free to get in touch using any of the methods below, or please fill out the contact form
             and someone will be in touch
          </p>
@@ -53,7 +50,7 @@
             </li>
          </ol>
       </div>
-      <div>
+      <div class="child"
          <form id="contactForm" class="form" class="regular-shadow slideInRight" autocomplete="off">
             <ol>
                <li>
@@ -83,6 +80,7 @@
 {% endblock %}
 
 {% block delayed_js %}
+{{ block.super }}
 <script src="{% static 'js/contact.js' %}" type="module" async></script>
 {% endblock %}
 

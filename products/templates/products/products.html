@@ -9,12 +9,9 @@
 
 {% block page_header %}
 <section class="masthead" role="img" aria-label="Image Description">
-   <h1>
+   <h2>
        {{ request.resolver_match.url_name }}
-   </h1>
-     <button>
-       BREADCRUMBS
-     </button>
+   </h2>
  </section>
  <section class="searchBar">
    <div class="searchProducts">
@@ -71,6 +68,7 @@
 {% endblock %}
 
 {% block delayed_js %}
+{{ block.super }}
 <script>
 const currentURL = new URL(window.location)
 const selectElement = document.querySelector('#selectElement');
