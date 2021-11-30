@@ -11,12 +11,9 @@
 
 {% block page_header %}
 <section class="masthead" role="img" aria-label="Image Description">
-   <h1>
+   <h2>
        Checkout
-   </h1>
-     <button>
-       BREADCRUMBS
-     </button>
+   </h2>
 </section>
 {% endblock %}
 
@@ -25,7 +22,7 @@
 
   <div class="pageContent">
     <!-- div 1-->
-    <div>
+    <div class="child">
       <table class="table" id="orderTable">
         <tr class="row head tableHead"><td><h3>Order Summary</h3></td></tr>
       {% if bag_items %} 
@@ -79,7 +76,7 @@
         <tr class="row tableBody totals">
                   <td class="cell"></td><td class="cell"></td><td class="cell"></td>
             <td class="cell "></td>   
-            <td class="cell">
+            <td class="cell" style="text-align: right;">
                    Spend €{{ free_delivery_delta }} more for free delivery!          
             </td>
         </tr>
@@ -101,7 +98,7 @@
     </table>
     </div>
     <!-- div 2-->
-    <div>
+    <div class="child">
     <form action="{% url 'checkout' %}" method="POST" id="payment-form">
       {% csrf_token %}
       
@@ -134,18 +131,18 @@
           <div id="card-error"></div>
       </fieldset>
 
-    
+
       
       </form>
-
-    
-    </div>
-    
-    </div>
-      <div class="buttonRow fEnd">
-        <a href="{% url 'products' %}"><button class="button flip" style="margin-right: .5rem; text-align: center;"><i class="icon-email" style="margin-right: .5rem;"></i>Update Bag</button></a>
-        <button id="submitPayment" type="submit" class="button button--addOnRight"><i class="icon-basket" style="margin-right: .5rem;"></i>Pay Now</button>
+          <div class="buttonRow fEnd">
+        <a href="{% url 'products' %}"><button class="button flip" style="margin-right: .5rem; text-align: center;"><i class="icon-basket" style="margin-right: .5rem;"></i>Update Bag</button></a>
+        <button id="submitPayment" type="submit" class="button button--addOnRight"><i class="icon-credit-card" style="margin-right: .5rem;"></i>Pay Now</button>
       </div>
+    
+    </div>
+    
+    </div>
+
 </section>
 {% endblock %}
 
@@ -155,7 +152,7 @@
 {% block delayed_js %}
 {{ block.super }}
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-{{ stripe_public_key|json_script:"id_stripe_client_secret" }}
+{{ client_secret|json_script:"id_stripe_client_secret" }}
 
 <script src="{% static 'js/stripeElements.js' %}"></script>
 
