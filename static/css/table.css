@@ -5,7 +5,6 @@
   padding: 0;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
   width: inherit;
-  background-color: var(--surface1);
   border-collapse: collapse;
 }
 
