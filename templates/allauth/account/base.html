@@ -9,7 +9,7 @@
 {% block page_header %}
 <section class="masthead" role="img" aria-label="Image Description">
    <h2>
-       Login
+    {{ request.resolver_match.url_name }}
    </h2>
  </section>
 {% endblock %}
