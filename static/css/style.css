@@ -758,6 +758,10 @@ input::-webkit-inner-spin-button {
   justify-content: flex-start;
   font-size: 0.75rem;
 }
+
+.adminBorder {
+  border: thin solid var(--brand)
+}
 /*    ----- END CONTACT PAGE ------   */
 /*    ----- Terms PAGE -----    */
 section.terms {

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block additional_css %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<section class="masthead" role="img" aria-label="Image Description">
+  <h2>
+    Product Management
+  </h2>
+</section>
+{% endblock %}
+
+{% block content %}
+<section>
+  <div class="pageContent">
+    <div class="child">
+
+    </div>
+    <div class="child">
+      <form action="{% url 'add_product' %}" method="POST" id="payment-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form | crispy }}
+
+
+
+      <div class="buttonRow fEnd">
+        <a href="{% url 'products' %}">
+          <button class="button flip" style="margin-right: .5rem; text-align: center;"><i class="icon-basket"
+              style="margin-right: .5rem;"></i>Cancel</button>
+        </a>
+        <button id="submitPayment" type="submit" class="button button--addOnRight"><i class="icon-credit-card"
+            style="margin-right: .5rem;"></i>Add Product</button>
+      </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

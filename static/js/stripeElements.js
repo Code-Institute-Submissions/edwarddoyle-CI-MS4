@@ -31,7 +31,7 @@ var form = document.getElementById('payment-form');
 
 submitButton.addEventListener('click', function (ev) {
     ev.preventDefault();
-    console.log('clicked')
+
     card.update({
         'disabled': true
     })
@@ -40,19 +40,21 @@ submitButton.addEventListener('click', function (ev) {
     let checkBox = document.getElementById('id-save-info').hasAttribute('checked')
 
     const getToken = document.querySelector('input[name="csrfmiddlewaretoken"]');
-    const csrfToken = getToken.value;
-//.slice(1, -1)
+    const csrfToken = getToken.value.slice(1, -1)
     let postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': stripeClientSecret,
         'save_info': checkBox
     }
-    console.log(postData)
-    let url = '/checkout/cache_checkout_data/';
 
+    let url = '/checkout/cache_checkout_data/';
     fetch(url, {
+        headers: {
+            'Content-Type': 'application/json',
+            "X-CSRFToken": csrfToken,
+        },
         method: 'POST',
-        body: postData
+        body: JSON.stringify(postData)
     }).then((response) => {
         stripe.confirmCardPayment(stripeClientSecret, {
             payment_method: {
@@ -94,7 +96,7 @@ submitButton.addEventListener('click', function (ev) {
                 submitButton.setAttribute('disabled', false)
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
-                    form.submit()
+                   form.submit()
                 }
             }
         });

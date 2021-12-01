@@ -2,167 +2,163 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    {% block meta %}
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% endblock %}
 
-    {% block icons %}
-    <meta name="theme-color" content="#ffffff">
-    <link rel="icon" href="{% static 'img/favicon.svg' %}">
-    <link rel="mask-icon" href="{% static 'img/apple-mask-icon.svg' %}" color="#000000">
-    <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
-    {% endblock %}
+<head>
+  <!-- Required meta tags -->
+  {% block meta %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% endblock %}
+
+  {% block icons %}
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="{% static 'img/favicon.svg' %}">
+  <link rel="mask-icon" href="{% static 'img/apple-mask-icon.svg' %}" color="#000000">
+  <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
+  {% endblock %}
 
 
-    {% block corecss %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-    {% endblock %}
+  {% block corecss %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  {% endblock %}
 
-    {% block additional_css %}
-    {% endblock %}
+  {% block additional_css %}
+  {% endblock %}
 
-    {% block additional_js %}
-    {% endblock %}
+  {% block additional_js %}
+  {% endblock %}
 
-    {% block corejs %}
+  {% block corejs %}
 
-    {{ block.super }}
-    <script src="{% static 'js/app.js' %}" type="module" async></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    {% endblock %}
-    <title>KCC {% block additional_title %}{% endblock %}</title>
+  {{ block.super }}
+  <script src="{% static 'js/app.js' %}" type="module" async></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  {% endblock %}
+  <title>KCC {% block additional_title %}{% endblock %}</title>
 
-  </head>
-  <body>
- 
-      <nav class="regular-shadow">
+</head>
 
-        <label for="menu-control" class="hamburger slideInDown">
-          <i class="hamburger__icon"></i>
-          <i class="hamburger__icon"></i>
-          <i class="hamburger__icon"></i>
-        </label>
+<body>
 
-        <input type="checkbox" id="menu-control" class="menu-control">
+  <nav class="regular-shadow">
 
-        <aside class="sidebar">
-          <div class="sidebar__menu">
-            <a href="{% url 'home' %}">Home</a>
-            {% if request.user.is_authenticated %}
-            {% if request.user.is_superuser %}
-            <a href="">Product Management</a>
-            {% endif %}
-            <a href="">My Account</a>
-            <a href="{% url 'account_logout' %}">Logout</a>
-            {% else %}
-            <a href="{% url 'account_signup' %}">Register</a>
-            <a href="{% url 'account_login' %}">Login</a>
-            {% endif %}
-            <a href="{% url 'contact' %}">Contact</a>
-          </div>
+    <label for="menu-control" class="hamburger slideInDown">
+      <i class="hamburger__icon"></i>
+      <i class="hamburger__icon"></i>
+      <i class="hamburger__icon"></i>
+    </label>
 
-          <label for="menu-control" class="sidebar__close"></label>
+    <input type="checkbox" id="menu-control" class="menu-control">
 
-        </aside>
-
-        <a class="logo" href="{% url 'home' %}"><img class="slideInDown" src="{% static 'img/logo.svg' %}" width="100"
-            loading="lazy" alt="KCC Logo" />
-        </a>
-
-        <div class=iconBox>
+    <aside class="sidebar">
+      <div class="sidebar__menu">
+        <a href="{% url 'home' %}">Home</a>
         {% if request.user.is_authenticated %}
-        <a href="{% url 'profile' %}">
-          <div class="shoppingCart slideInDown">
-            <i class="icon-person" style="font-size: 1.5rem;">
-            </i></div>
-        </a>
+        {% if request.user.is_superuser %}
+        <a href="">Product Management</a>
         {% endif %}
-        <a href="{% url 'view_bag' %}">
-          <div class="shoppingCart slideInDown">
-            <i class="icon-basket">              
-            </i></div>
-        </a>
+        <a href="">My Account</a>
+        <a href="{% url 'account_logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'account_signup' %}">Register</a>
+        <a href="{% url 'account_login' %}">Login</a>
+        {% endif %}
+        <a href="{% url 'contact' %}">Contact</a>
       </div>
+      <label for="menu-control" class="sidebar__close"></label>
+    </aside>
 
-        
-      </nav>
+    <a class="logo" href="{% url 'home' %}"><img class="slideInDown" src="{% static 'img/logo.svg' %}" width="100"
+        loading="lazy" alt="KCC Logo" />
+    </a>
+
+    <div class=iconBox>
+      {% if request.user.is_authenticated %}
+      <a href="{% url 'profile' %}">
+        <div class="shoppingCart slideInDown">
+          <i class="icon-person" style="font-size: 1.5rem;">
+          </i></div>
+      </a>
+      {% endif %}
+      <a href="{% url 'view_bag' %}">
+        <div class="shoppingCart slideInDown">
+          <i class="icon-basket">
+          </i></div>
+      </a>
+    </div>
+  </nav>
+
+  {% block page_header %}
+  {% endblock %}
+
+  {% block content %}
+
+  {% endblock %}
+
+  <button id="scrollToTop"> &#11165;</button>
+  <footer>
+    <!-- Footer main -->
+    <section class="ft-main">
+      <div class="ft-main-item">
+        <h2 class="ft-title">Pages</h2>
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+          <li><a href="{% url 'products' %}">Shop</a></li>
+        </ul>
+      </div>
+      <div class="ft-main-item">
+        <h2 class="ft-title">Products</h2>
+        <ul>
+          <li><a href="{% url 'products' %}?category=gifts">Gifts</a></li>
+          <li><a href="{% url 'products' %}?category=kits">Kits</a></li>
+          <li><a href="{% url 'products' %}?category=donations">Donations</a></li>
+        </ul>
+      </div>
+      <div class="ft-main-item">
+        <h2 class="ft-title"></h2>
+        <ul>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+        </ul>
+      </div>
+      <div class="ft-main-item">
+        <h2 class="ft-title">Stay Updated</h2>
+        <p>Subscribe to our newsletter to get our latest news.</p>
+        <form>
+          <input type="email" name="email" placeholder="Enter email address">
+          <input type="submit" value="Subscribe">
+        </form>
+      </div>
+    </section>
+
+    <section class="ft-social">
+      <ul class="ft-social-list">
+        <li><a href="#"><i class="icon-facebook"></i></a></li>
+        <li><a href="#"><i class="icon-twitter"></i></a></li>
+        <li><a href="#"><i class="icon-instagram"></i></a></li>
+      </ul>
+    </section>
+
+    <section class="ft-legal">
+      <ul class="ft-legal-list">
+        <li><a href="{% url 'terms' %}">Terms &amp; Conditions</a></li>
+        <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+        <li id="copyright"></li>
+      </ul>
+    </section>
+  </footer>
 
 
+  {% block delayed_js %}
+  {% endblock %}
 
-      {% block page_header %}
-      {% endblock %}
-      
+</body>
 
-        {% block content %}
-
-        {% endblock %}
-      
-      <button id="scrollToTop"> &#11165;</button>
-      <footer>
-        <!-- Footer main -->
-        <section class="ft-main">
-          <div class="ft-main-item">
-            <h2 class="ft-title">Pages</h2>
-            <ul>
-              <li><a href="{% url 'home' %}">Home</a></li>
-              <li><a href="{% url 'contact' %}">Contact</a></li>
-              <li><a href="{% url 'products' %}">Shop</a></li>
-            </ul>
-          </div>
-          <div class="ft-main-item">
-            <h2 class="ft-title">Products</h2>
-            <ul>
-              <li><a href="{% url 'products' %}?category=gifts">Gifts</a></li>
-              <li><a href="{% url 'products' %}?category=kits">Kits</a></li>
-              <li><a href="{% url 'products' %}?category=donations">Donations</a></li>
-            </ul>
-          </div>
-          <div class="ft-main-item">
-            <h2 class="ft-title"></h2>
-            <ul>
-              <li><a href="#"></a></li>
-              <li><a href="#"></a></li>
-              <li><a href="#"></a></li>
-            </ul>
-          </div>
-          <div class="ft-main-item">
-            <h2 class="ft-title">Stay Updated</h2>
-            <p>Subscribe to our newsletter to get our latest news.</p>
-            <form>
-              <input type="email" name="email" placeholder="Enter email address">
-              <input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </section>
-
-        <section class="ft-social">
-          <ul class="ft-social-list">
-            <li><a href="#"><i class="icon-facebook"></i></a></li>
-            <li><a href="#"><i class="icon-twitter"></i></a></li>
-            <li><a href="#"><i class="icon-instagram"></i></a></li>
-          </ul>
-        </section>
-        
-        <section class="ft-legal">
-          <ul class="ft-legal-list">
-            <li><a href="{% url 'terms' %}">Terms &amp; Conditions</a></li>
-            <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
-            <li id="copyright"></li>
-          </ul>
-        </section>
-      </footer>
-
-
-{% block delayed_js %}
-{% endblock %}
-
-  </body>
 </html>

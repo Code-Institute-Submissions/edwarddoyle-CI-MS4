@@ -7,11 +7,11 @@ from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order, OrderItem
-from products.models import Product
-from profiles.forms import UserProfileForm
-from profiles.models import UserProfile
-from bag.contexts import bag_contents
 
+from products.models import Product
+from profiles.models import UserProfile
+from profiles.forms import UserProfileForm
+from bag.contexts import bag_contents
 
 import stripe
 import json
