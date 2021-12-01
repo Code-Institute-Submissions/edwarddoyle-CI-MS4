@@ -126,13 +126,36 @@
             </div>
           </td>
         </tr>
+
+       
+
         <tr class="row tableBody totals totalHeader">
           <td class="cell">
             <div class="buttonRow fEnd">
-              <a class="button" href="{% url 'home' %}">Home</a>
+              
             </div>
           </td>
         </tr>
+
+
+        
+
+        <tr class="row tableBody totals totalHeader">
+          <td class="cell">
+            <div class="buttonRow fEnd">
+               {% if from_profile%}
+               <a class="button" href="{% url 'profile' %}">Back to Profile</a>
+               {% else %}
+              <a class="button" href="{% url 'home' %}">Home</a>
+              {% endif %}
+            </div>
+          </td>
+        </tr>
+        
+
+
+
+
       </table>
     </div>
   </div>

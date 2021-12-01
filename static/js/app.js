@@ -10,8 +10,9 @@ function isLargeScreen(){
 
  const copyrightYear = document.querySelector('#copyright');
  let d = new Date();
+ if(copyrightYear){
  copyrightYear.innerHTML = `&copy; ${d.getFullYear()} KCC`;
-
+ }
  window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {

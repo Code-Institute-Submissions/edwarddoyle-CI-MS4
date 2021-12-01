@@ -31,20 +31,17 @@ var form = document.getElementById('payment-form');
 
 submitButton.addEventListener('click', function (ev) {
     ev.preventDefault();
+    console.log('clicked')
     card.update({
         'disabled': true
     })
     submitButton.setAttribute('disabled', true)
 
-    const checkBox = document.getElementById('id-save-info')
-    if (checkBox) {
-        let saveInfo = checkBox.hasAttribute('checked') ? true : false;
-        return saveInfo
-    }
+    let checkBox = document.getElementById('id-save-info').hasAttribute('checked')
 
     const getToken = document.querySelector('input[name="csrfmiddlewaretoken"]');
-    const csrfToken = getToken.value.slice(1, -1);
-
+    const csrfToken = getToken.value;
+//.slice(1, -1)
     let postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': stripeClientSecret,
@@ -54,11 +51,6 @@ submitButton.addEventListener('click', function (ev) {
     let url = '/checkout/cache_checkout_data/';
 
     fetch(url, {
-    //     headers:{
-    //         'Accept': 'application/json',
-    //         'X-Requested-With': 'XMLHttpRequest',
-    //         'X-CSRFToken': csrfToken,
-    // },
         method: 'POST',
         body: postData
     }).then((response) => {

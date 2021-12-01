@@ -5,7 +5,7 @@ from django.conf import settings
 
 from .models import Order, OrderItem
 from products.models import Product
-# from profiles.models import UserProfile
+from profiles.models import UserProfile
 
 import json
 import time
@@ -93,7 +93,7 @@ class StripeWH_Handler:
         if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(
-                content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
+                content=f'Webhook received: {event["type"]} | SUCCESS',
                 status=200)
         else:
             order = None
