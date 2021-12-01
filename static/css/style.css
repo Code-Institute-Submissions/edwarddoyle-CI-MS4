@@ -320,6 +320,24 @@ nav > * {
   display: flex;
 }
 
+.iconBox {
+  display: flex;
+  height: 2rem;
+  line-height: 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shoppingCart {
+  display: flex;
+  
+}
+
+.iconBox a:first-child div {
+  display: flex;
+  margin-right: 1rem;
+}
+
 .hamburger {
   display: flex;
   height: 18px;

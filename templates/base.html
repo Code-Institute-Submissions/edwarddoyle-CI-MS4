@@ -77,10 +77,20 @@
             loading="lazy" alt="KCC Logo" />
         </a>
 
-        <a href="{% url 'view_bag' %}">
-          <div class="shoppingCart slideInDown"><i class="icon-basket"></i></div>
+        <div class=iconBox>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'profile' %}">
+          <div class="shoppingCart slideInDown">
+            <i class="icon-person" style="font-size: 1.5rem;">
+            </i></div>
         </a>
-
+        {% endif %}
+        <a href="{% url 'view_bag' %}">
+          <div class="shoppingCart slideInDown">
+            <i class="icon-basket">              
+            </i></div>
+        </a>
+      </div>
 
         
       </nav>
