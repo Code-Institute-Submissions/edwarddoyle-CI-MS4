@@ -484,11 +484,16 @@ video {
   background-size: cover;
   height: 60vh;
   width: 100vw;
-  padding: 0 2rem;
+  padding:  2rem;
   z-index: 1;
   position: absolute;
   top: 10vh;
 }
+
+.homeMain {
+  margin-top: 10vh;
+}
+
 
 .header-content {
   align-items: flex-start;
@@ -499,9 +504,9 @@ video {
   height: 30vh;
 }
 
-.header-content>* {
+/* .header-content>* {
   margin-bottom: 1.5rem;
-}
+} */
 
 .buttonRow {
   display: flex;
@@ -511,7 +516,7 @@ video {
   margin-top: 1rem;
 }
 
-.buttonRow button:first-child {
+.buttonRow button:first-child, .buttonRow a:first-child {
   margin-right: 1rem;
 }
 
@@ -662,7 +667,7 @@ div.content input.input.stepperInput__input{
   padding: 0;
 }
 
-input:not(.input.stepperInput__input),
+input:not(.input.stepperInput__input, input[type="checkbox"]),
 select,
 textarea {
   padding: 0rem 0.5rem;
@@ -750,13 +755,6 @@ section.terms b {
 }
 
 /*    ----- END Terms PAGE -----    */
-/*    ----- Bag PAGE -----    */
-
-.bag {
-  /* margin: 2rem; */
-}
-
-/*    ----- END Products PAGE -----    */
 
 /*    ----- Animations -----    */
 .slideInDown {
