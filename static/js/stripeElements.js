@@ -1,7 +1,7 @@
 const key = document.querySelector('#id_stripe_public_key').text
-const secret = document.querySelector('#id_stripe_client_secret')
+const secret = document.querySelector('#id_client_secret').text
 const stripePublicKey = key.slice(1, -1)
-const stripeClientSecret = secret.text.slice(1, -1)
+const stripeClientSecret = secret.slice(1, -1)
 
 
 const stripe = Stripe(stripePublicKey)
@@ -11,7 +11,7 @@ const card = elements.create('card')
 
 //style here
 const card_element = document.querySelector('#card-element')
-const error_element = document.querySelector('#card-errors')
+const error_element = document.querySelector('#card-error')
 card.mount(card_element)
 
 const submitButton = document.querySelector('#submitPayment')
@@ -36,29 +36,77 @@ submitButton.addEventListener('click', function (ev) {
     })
     submitButton.setAttribute('disabled', true)
 
+    const checkBox = document.getElementById('id-save-info')
+    if (checkBox) {
+        let saveInfo = checkBox.hasAttribute('checked') ? true : false;
+        return saveInfo
+    }
 
-    // If the client secret was rendered server-side as a data-secret attribute
-    // on the <form> element, you can retrieve it here by calling `form.dataset.secret`
-    stripe.confirmCardPayment(stripeClientSecret, {
-        payment_method: {
-            card: card,
-        }
-    }).then(function (result) {
-        if (result.error) {
-            let html = `
+    const getToken = document.querySelector('input[name="csrfmiddlewaretoken"]');
+    const csrfToken = getToken.value.slice(1, -1);
+
+    let postData = {
+        'csrfmiddlewaretoken': csrfToken,
+        'client_secret': stripeClientSecret,
+        'save_info': checkBox
+    }
+    console.log(postData)
+    let url = '/checkout/cache_checkout_data/';
+
+    fetch(url, {
+    //     headers:{
+    //         'Accept': 'application/json',
+    //         'X-Requested-With': 'XMLHttpRequest',
+    //         'X-CSRFToken': csrfToken,
+    // },
+        method: 'POST',
+        body: postData
+    }).then((response) => {
+        stripe.confirmCardPayment(stripeClientSecret, {
+            payment_method: {
+                card: card,
+                billing_details: {
+                    name: (form.full_name.value).trim(),
+                    phone: (form.phone.value).trim(),
+                    email: (form.email.value).trim(),
+                    address: {
+                        line1: (form.address_line_1.value),
+                        line2: (form.address_line_2.value),
+                        city: (form.town_or_city.value),
+                        country: (form.country.value),
+                        state: (form.county.value),
+                    }
+                }
+            },
+            shipping: {
+                name: (form.full_name.value),
+                phone: (form.phone.value),
+                address: {
+                    line1: (form.address_line_1.value),
+                    line2: (form.address_line_2.value),
+                    city: (form.town_or_city.value),
+                    country: (form.country.value),
+                    postal_code: (form.postcode.value),
+                    state: (form.county.value),
+                }
+            }
+        }).then(function (result) {
+            if (result.error) {
+                let html = `
         <span><i class="icon-basket"></i> ${result.error.message}</span>
         `;
-            error_element.insertAdjacentElement('afterbegin', html)
-            card.update({
-                'disabled': false
-            })
-            submitButton.setAttribute('disabled', false)
-        } else {
-            // The payment has been processed!
-            if (result.paymentIntent.status === 'succeeded') {
-                // console.log(`${paymentIntent.status}`)
-                form.submit()
+                error_element.insertAdjacentElement('afterbegin', html)
+                card.update({
+                    'disabled': false
+                })
+                submitButton.setAttribute('disabled', false)
+            } else {
+                if (result.paymentIntent.status === 'succeeded') {
+                    form.submit()
+                }
             }
-        }
-    });
+        });
+
+    })
+
 });
