@@ -39,8 +39,10 @@
                   </div>
                </li>
                <li style="width: 100%;">
-                  <a href="{% url 'products' %}"><button class="button flip" style="margin-right: .5rem; text-align: center;"><i class="icon-left"
-                        style="margin-right: .5rem;"></i>Keep Shopping</button></a>
+                  <!-- <a href="{% url 'products' %}?category="> -->
+                     <button id="keepShopping" class="button flip" style="margin-right: .5rem; text-align: center;"><i class="icon-left"
+                        style="margin-right: .5rem;"></i>Keep Shopping</button>
+                     <!-- </a> -->
                   <button type="submit" class="button button--addOnRight"><i class="icon-basket"
                         style="margin-right: .5rem;"></i>Add To Bag</button>
                </li>
@@ -80,5 +82,12 @@
 
       stepperValue.setAttribute("value", `${stepperValue.value}`)
    }
+
+
+   const keepShopping = document.querySelector('#keepShopping')
+   keepShopping.addEventListener('click', (e)=>{
+      e.preventDefault()
+      window.location = "{% url 'products' %}"
+   })
 </script>
 {% endblock %}

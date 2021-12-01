@@ -8,145 +8,158 @@
 
 {% block page_header %}
 <section class="masthead" role="img" aria-label="Image Description">
-   <h2>
-       Shopping Bag
-   </h2>
+  <h2>
+    Shopping Bag
+  </h2>
 </section>
 {% endblock %}
 
 {% block content %}
 <section class="bag">
-    <table class="table" id="stockTable">
-    {% if bag_items %} 
-    <tr class="row tableHead" >
+  <table class="table" id="stockTable">
+    {% if bag_items %}
+    <tr class="row tableHead">
       <td class="celltitle">{{ item.product.name }}</td>
-      <td class="cell"></td>  
+      <td class="cell"></td>
       <td class="cell">Item</td>
       <td class="cell">Price</td>
       <td class="cell">Quantity</td>
       <td class="cell">Sub Total</td>
     </tr>
     {% for item in bag_items %}
-    <tr class="row tableBody">  
+    <tr class="row tableBody">
       <td class="celltitle">{{ item.product.name }}</td>
-        <td class="cell mobileHidden" >
-            <div class="title">item</div>
-            <div class="content number">image</div>
-          </td>  
-         <td class="cell mobileHidden" >
-           <div class="title">{{ item.product.name }}</div>
-           <div class="content">{{ item.product.name }}</div>
-         </td>
-         <td class="cell" >
-           <div class="title">Price Each</div>
-           <div class="content">{{ item.product.price }}</div>
-         </td>
-         <td class="cell">
-           <div class="title">Quantity </div>
-           <div class="content fEnd includesStepper">
- 
-              <div class="stepperInput">
-                           <form method="POST" id="qtyForm" action="{% url 'modify_bag' item.item_id %}">
+      <td class="cell mobileHidden">
+        <div class="title">item</div>
+        <div class="content number">image</div>
+      </td>
+      <td class="cell mobileHidden">
+        <div class="title">{{ item.product.name }}</div>
+        <div class="content">{{ item.product.name }}</div>
+      </td>
+      <td class="cell">
+        <div class="title">Price Each</div>
+        <div class="content">{{ item.product.price }}</div>
+      </td>
+      <td class="cell">
+        <div class="title">Quantity </div>
+        <div class="content fEnd includesStepper">
+          <div class="stepperInput">
+            <form method="POST" id="qtyForm" action="{% url 'modify_bag' item.item_id %}">
               {% csrf_token %}
-                <button id="step_down" class="button button--addOnLeft">-</button>
-
-                <input type="text" name="quantity" min="0" value="{{ item.quantity }}" 
-                class="stepperInput__input"
-                data_item_id="{{ item.item_.id }}" id="id_qty_{{ item.item_id }}"/>
-                
-                <button id="step_up" class="button button--addOnRight">+</button>
-              </form>
-              </div>
-             <!-- {{ item.quantity }} -->
-            
-            </div>
-         </td>
-         <td class="cell">
-         <div class="title">Sub Total</div>
-         <div class="content number">{{ item.sub_total }}</div>
-       </td>
-     </tr>
-    {% endfor %}
-    <tr class="row tableBody totals">
-      <td class="cell"></td><td class="cell"></td><td class="cell"></td>
-      <td class="cell"><h6><strong>Sub Total</strong></h6></td>
+              <button id="step_down" class="button button--addOnLeft">-</button>
+              <input type="text" name="quantity" min="0" value="{{ item.quantity }}" class="stepperInput__input"
+                data_item_id="{{ item.item_.id }}" id="id_qty_{{ item.item_id }}" />
+              <button id="step_up" class="button button--addOnRight">+</button>
+            </form>
+          </div>
+        </div>
+      </td>
       <td class="cell">
         <div class="title">Sub Total</div>
-        <div class="content number" ><h6><strong>{{ total|floatformat:2 }}</strong></h6></div>
+        <div class="content number">{{ item.sub_total }}</div>
+      </td>
+    </tr>
+    {% endfor %}
+    <tr class="row tableBody totals">
+      <td class="cell mobileHidden"></td>
+      <td class="cell mobileHidden"></td>
+      <td class="cell mobileHidden"></td>
+      <td class="cell mobileHidden">
+        <h6><strong>Sub Total</strong></h6>
+      </td>
+      <td class="cell">
+        <div class="title">Sub Total</div>
+        <div class="content number">
+          <h6><strong>{{ total|floatformat:2 }}</strong></h6>
+        </div>
       </td>
     </tr>
     <tr class="row tableBody totals">
-      <td class="cell"></td><td class="cell"></td><td class="cell"></td>
-      <td class="cell"><h6><strong>Delivery</strong></h6></td>
+      <td class="cell mobileHidden"></td>
+      <td class="cell mobileHidden"></td>
+      <td class="cell mobileHidden"></td>
+      <td class="cell mobileHidden">
+        <h6><strong>Delivery</strong></h6>
+      </td>
       <td class="cell">
         <div class="title">Delivery</div>
-        <div class="content number" ><h6><strong>{{ delivery|floatformat:2 }}</strong></h6></div>
+        <div class="content number">
+          <h6><strong>{{ delivery|floatformat:2 }}</strong></h6>
+        </div>
       </td>
     </tr>
     {% if free_delivery_delta > 0 %}
-      <tr class="row tableBody totals">
-                <td class="cell"></td><td class="cell"></td><td class="cell"></td>
-          <td class="cell "></td>   
-          <td class="cell">
-                 Spend €{{ free_delivery_delta }} more for free delivery!          
-          </td>
-      </tr>
-    {% endif %}
     <tr class="row tableBody totals">
-      <td class="cell"></td><td class="cell"></td><td class="cell"></td>
-      <td class="cell "><h6><strong>Grand Total</strong></h6></td>
+      <td class="cell mobileHidden"></td>
+      <td class="cell mobileHidden"></td>
+      <td class="cell mobileHidden"></td>
+      <td class="cell mobileHidden"></td>
       <td class="cell">
-        <div class="title">Grand Total</div>
-        <div class="content number" ><h6><strong>{{ grand_total|floatformat:2 }}</strong></h6></div>
+        Spend €{{ free_delivery_delta }} more for free delivery!
       </td>
     </tr>
-</table>
-
-    {% else %}
-    <tr class="row tableHead"><h2>Your Bag is Empty!</h2></tr>
     {% endif %}
-
-</table>
-<div class="buttonRow fEnd">
-  <a href="{% url 'products' %}"><button class="button flip" style="margin-right: .5rem; text-align: center;"><i class="icon-basket" style="margin-right: .5rem;"></i>Keep Shopping</button></a>
-  <a href="{% url 'checkout' %}"><button type="submit" class="button button--addOnRight"><i class="icon-credit-card" style="margin-right: .5rem;"></i>Checkout</button></a>
-</div>
-
-
-{% endblock %}
+    <tr class="row tableBody totals">
+      <td class="cell mobileHidden"></td>
+      <td class="cell mobileHidden"></td>
+      <td class="cell mobileHidden"></td>
+      <td class="cell mobileHidden">
+        <h6><strong>Grand Total</strong></h6>
+      </td>
+      <td class="cell">
+        <div class="title">Grand Total</div>
+        <div class="content number">
+          <h6><strong>{{ grand_total|floatformat:2 }}</strong></h6>
+        </div>
+      </td>
+    </tr>
+  </table>
+  {% else %}
+  <tr class="row tableHead">
+    <h2>Your Bag is Empty!</h2>
+  </tr>
+  {% endif %}
+  </table>
+  <div class="buttonRow fEnd">
+    <a href="{% url 'products' %}"><button class="button flip" style="margin-right: .5rem; text-align: center;"><i
+          class="icon-basket" style="margin-right: .5rem;"></i>Keep Shopping</button></a>
+    <a href="{% url 'checkout' %}"><button type="submit" class="button button--addOnRight"><i class="icon-credit-card"
+          style="margin-right: .5rem;"></i>Checkout</button></a>
+  </div>
+  {% endblock %}
 </section>
 
 
 {% block delayed_js %}
 {{ block.super }}
 <script>
-const stepperValue = document.querySelector('.stepperInput__input');
-const qtyForm = document.querySelector('#qtyForm');
+  const stepperValue = document.querySelector('.stepperInput__input');
+  const qtyForm = document.querySelector('#qtyForm');
 
-let stepper = document.querySelectorAll('.stepperInput button')
-stepper.forEach((btn) => {  
-   btn.addEventListener('click', (e) => {
+  let stepper = document.querySelectorAll('.stepperInput button')
+  stepper.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
       e.preventDefault()
       let stepperClicked = e.currentTarget.id;
       step(stepperClicked)
-   })
-})
+    })
+  })
 
-function step(e){ 
-   e === "step_up" ?  stepUp() : stepDown()
+  function step(e) {
+    e === "step_up" ? stepUp() : stepDown()
 
-   function stepUp(){
+    function stepUp() {
       stepperValue.value++
       qtyForm.submit();
-   }
+    }
 
-   function stepDown(){      
-      stepperValue.value == 0 ? stepperValue.setAttribute("value", 0) : stepperValue.value--  
-      qtyForm.submit();     
-   }
+    function stepDown() {
+      stepperValue.value == 0 ? stepperValue.setAttribute("value", 0) : stepperValue.value--
+      qtyForm.submit();
+    }
 
-   stepperValue.setAttribute("value", `${stepperValue.value}`)
-}
-
+    stepperValue.setAttribute("value", `${stepperValue.value}`)
+  }
 </script>
 {% endblock %}
