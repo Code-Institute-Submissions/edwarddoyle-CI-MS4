@@ -4,48 +4,137 @@
 {% block additional_css %}
 <link rel="stylesheet" href="{% static 'css/header.css' %}">
 <link rel="stylesheet" href="{% static 'css/table.css' %}">
-<link rel="stylesheet" href="{% static 'css/stripe.css' %}">
 {% endblock %}
-
-
 
 {% block page_header %}
 <section class="masthead" role="img" aria-label="Image Description">
-   <h1>
-       Thank you
-   </h1>
-     <!-- <button>
-       BREADCRUMBS
-     </button> -->
+  <h2>
+    Thank you
+  </h2>
 </section>
 {% endblock %}
 
 {% block content %}
-<section class="bag">
-
+<section>
   <div class="pageContent">
-    <!-- div 1-->
-    <div class="orderDetails">
-      <h4>Order Details</h4>
-      <ol class="orderConfirm">
-        <li></li>
-        <li>Order No: {{ order.order_number }}</li>
-        <li>Order Date: {{ order.date_ordered }}</li>
-
-
-
-      </ol>
-
+    <div class="child">
+      <table class="table" id="orderTable">
+        <tr class="row head ">
+          <h3>Order Summary</h3>
+        </tr>
+        <tr class="row tableBody totals">
+          <td class="cell mobileHidden">
+            <h6><strong>Order No:</strong></h6>
+          </td>
+          <td class="cell">
+            <div class="title">
+              <h6><strong>Order No:</strong></h6>
+            </div>
+            <div class="content number">{{ order.order_number }}</div>
+          </td>
+        </tr>
+        <tr class="row tableBody totals">
+          <td class="cell mobileHidden">
+            <h6><strong>Order Date:</strong></h6>
+          </td>
+          <td class="cell">
+            <div class="title">
+              <h6><strong>Order Date:</strong></h6>
+            </div>
+            <div class="content number">{{ order.date_ordered }}</div>
+          </td>
+        </tr>
+        <tr class="row tableBody totals">
+          <td class="cell mobileHidden">
+            <h6><strong>Order Total:</strong></h6>
+          </td>
+          <td class="cell">
+            <div class="title">
+              <h6><strong>Order Total:</strong></h6>
+            </div>
+            <div class="content number">€{{ order.grand_total }}</div>
+          </td>
+        </tr>
+        <tr class="row tableBody totals totalHeader">
+          <td class="cell">Order Items:</td>
+        </tr>
+        {% for item in order.lineitems.all %}
+        <tr class="row tableBody totals">
+          <td class="cell mobileHidden">
+            <h6><strong>{{ item.product.name }}</strong></h6>
+          </td>
+          <td class="cell">
+            <div class="title">
+              <h6><strong>{{ item.product.name }}</strong></h6>
+            </div>
+            <div class="content number">{{ item.quantity }} @ €{{ item.product.price }} each</div>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
     </div>
-    <!-- div 2-->
-    <div>
-
-    
+    <div class="child">
+      <table class="table" id="orderTable">
+        <tr class="row head ">
+          <h3>Delivery Summary</h3>
+        </tr>
+        <tr class="row tableBody totals">
+          <td class="cell mobileHidden">
+            <h6><strong>Name:</strong></h6>
+          </td>
+          <td class="cell">
+            <div class="title">
+              <h6><strong>Name:</strong></h6>
+            </div>
+            <div class="content number">{{ order.full_name }}</div>
+          </td>
+        </tr>
+        <tr class="row tableBody totals">
+          <td class="cell mobileHidden">
+            <h6><strong>Email:</strong></h6>
+          </td>
+          <td class="cell">
+            <div class="title">
+              <h6><strong>Email:</strong></h6>
+            </div>
+            <div class="content number">{{ order.email }}</div>
+          </td>
+        </tr>
+        <tr class="row tableBody totals">
+          <td class="cell mobileHidden">
+            <h6><strong>Address:</strong></h6>
+          </td>
+          <td class="cell">
+            <div class="title">
+              <h6><strong>Address:</strong></h6>
+            </div>
+            <div class="content number">
+              <ol class="addressList">
+                <li>{{ order.address_line_1 }}</li>
+                {% if order.address_line_2 %}
+                <li>{{ order.address_line_2 }}</li>
+                {% endif %}
+                <li>{{ order.town_or_city }}</li>
+                {% if order.county %}
+                <li>{{ order.county }}</li>
+                {% endif %}
+                {% if order.postcode %}
+                <li>{{ order.postcode }}</li>
+                {% endif %}
+                <li>{{ order.country }}</li>
+              </ol>
+            </div>
+          </td>
+        </tr>
+        <tr class="row tableBody totals totalHeader">
+          <td class="cell">
+            <div class="buttonRow fEnd">
+              <a class="button" href="{% url 'home' %}">Home</a>
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
-    
-    </div>
-      <div class="buttonRow fEnd">
-        <a href="{% url 'products' %}"><button class="button flip" style="margin-right: .5rem; text-align: center;"><i class="icon-left" style="margin-right: .5rem;"></i>Continue Shopping</button></a>
-      </div>
+  </div>
 </section>
 {% endblock %}
