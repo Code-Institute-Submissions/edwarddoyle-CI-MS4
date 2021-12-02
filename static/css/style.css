@@ -221,6 +221,10 @@ html {
   overflow-x: hidden;
 }
 
+section:not(.searchBar, .header-content, .masthead), .pageContent {
+  margin: 2rem 0;
+}
+
 #scrollToTop {
   position: fixed;
   /* Needs to stay visible for all mobile scrolling */
@@ -506,6 +510,10 @@ video {
   z-index: 1;
   position: absolute;
   top: 10vh;
+}
+
+header.homeHeader ~ footer {
+  margin-top: 10vh;
 }
 
 .homeMain {
