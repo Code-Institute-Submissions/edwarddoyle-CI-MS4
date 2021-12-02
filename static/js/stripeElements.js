@@ -16,8 +16,6 @@ card.mount(card_element)
 
 const submitButton = document.querySelector('#submitPayment')
 
-
-
 card.addEventListener('change', (e) => {
     if (e.error) {
         let html = `
@@ -42,22 +40,20 @@ submitButton.addEventListener('click', function (ev) {
     const getToken = document.querySelector('input[name="csrfmiddlewaretoken"]');
     // csrftoken = 
     const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    
-    //getToken.value.slice(1, -1)
+
     let postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': stripeClientSecret,
         'save_info': checkBox
     }
-    // {headers: {'X-CSRFToken': csrftoken}}
+ 
     let url = '/checkout/cache_checkout_data/';
     fetch(url, {
         headers: {
-            'Content-Type': 'application/json',
             "X-CSRFToken": csrfToken,
         },
         method: 'POST',
-        body: JSON.stringify(postData)
+        body: postData
     }).then((response) => {
         stripe.confirmCardPayment(stripeClientSecret, {
             payment_method: {
