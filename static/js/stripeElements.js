@@ -49,7 +49,7 @@ submitButton.addEventListener('click', function (ev) {
         'client_secret': stripeClientSecret,
         'save_info': checkBox
     }
-
+    // {headers: {'X-CSRFToken': csrftoken}}
     let url = '/checkout/cache_checkout_data/';
     fetch(url, {
         headers: {
