@@ -14,6 +14,8 @@ function isLargeScreen() {
 }
 
 const copyrightYear = document.querySelector('#copyright');
+const scrollToTop = document.querySelector('#scrollToTop');
+
 let d = new Date();
 if (copyrightYear) {
   copyrightYear.innerHTML = `&copy; ${d.getFullYear()} KCC`;
@@ -29,6 +31,8 @@ function scrollFunction() {
     scrollToTop.style.display = "none";
   }
 }
+
+
 scrollToTop.addEventListener("click", function () {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
