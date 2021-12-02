@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block page_header %}
-<section class="masthead" role="img" aria-label="Image Description">
+<section class="masthead">
   <h2>
     Shopping Bag
   </h2>
@@ -31,7 +31,8 @@
       <td class="celltitle">{{ item.product.name }}</td>
       <td class="cell mobileHidden">
         <div class="title">item</div>
-        <div class="content number"><img src="{{ item.product.image_url }}" alt="{{ item.product.name }}" width="50"/></div>
+        <div class="content number"><img src="{{ item.product.image_url }}" alt="{{ item.product.name }}" width="50" />
+        </div>
       </td>
       <td class="cell mobileHidden">
         <div class="title">{{ item.product.name }}</div>

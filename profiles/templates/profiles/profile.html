@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block page_header %}
-<section class="masthead" role="img" aria-label="Image Description">
+<section class="masthead">
   <h2>
     {{ user }}
   </h2>
@@ -19,15 +19,12 @@
 <section class="bag">
   <div class="pageContent">
     <div class="child">
-        
-
       <table class="table" id="orderHistoryTable">
         <tr class="row tableHead">
           <td>
             <h3>Order History</h3>
           </td>
         </tr>
-
         <tr class="row tableHead">
           <td class="cell">Order No:</td>
           <td class="cell">Date</td>
@@ -39,8 +36,7 @@
           <td class="cell">
             <div class="title">Order No:</div>
             <div class="content" style="word-break: break-all;"><a href="{% url 'order_history' order.order_number %}"
-              title="{{ order.order_number }}"
-              > {{ order.order_number|truncatechars:10 }} </a></div>
+                title="{{ order.order_number }}"> {{ order.order_number|truncatechars:10 }} </a></div>
           </td>
           <td class="cell">
             <div class="title">Date </div>
@@ -66,20 +62,18 @@
           </td>
         </tr>
         {% endfor %}
-        
+
       </table>
     </div>
     <div class="child">
       <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
         {% csrf_token %}
         {{ form|crispy }}
-      <div class="buttonRow fEnd">
-        <button type="submit" class="button">Update</button>
-      </div>
+        <div class="buttonRow fEnd">
+          <button type="submit" class="button">Update</button>
+        </div>
       </form>
     </div>
   </div>
 </section>
 {% endblock %}
-
-

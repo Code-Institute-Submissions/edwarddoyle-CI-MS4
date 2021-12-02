@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block page_header %}
-<section class="masthead" role="img" aria-label="Image Description">
+<section class="masthead">
   <h2>
     Thank you
   </h2>
@@ -126,36 +126,24 @@
             </div>
           </td>
         </tr>
-
-       
-
         <tr class="row tableBody totals totalHeader">
           <td class="cell">
             <div class="buttonRow fEnd">
-              
+
             </div>
           </td>
         </tr>
-
-
-        
-
         <tr class="row tableBody totals totalHeader">
           <td class="cell">
             <div class="buttonRow fEnd">
-               {% if from_profile%}
-               <a class="button" href="{% url 'profile' %}">Back to Profile</a>
-               {% else %}
+              {% if from_profile%}
+              <a class="button" href="{% url 'profile' %}">Back to Profile</a>
+              {% else %}
               <a class="button" href="{% url 'home' %}">Home</a>
               {% endif %}
             </div>
           </td>
         </tr>
-        
-
-
-
-
       </table>
     </div>
   </div>

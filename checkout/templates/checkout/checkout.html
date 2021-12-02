@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block page_header %}
-<section class="masthead" role="img" aria-label="Image Description">
+<section class="masthead">
   <h2>
     Checkout
   </h2>
@@ -137,8 +137,8 @@
 
         {% if user.is_authenticated %}
         <li>
-        <label>Save address to profile</label>
-        <input id="id-save-info" name="id-save-info" type="checkbox" checked/></li>
+          <label>Save address to profile</label>
+          <input id="id-save-info" name="id-save-info" type="checkbox" checked /></li>
         {% else %}
         <li>
           <div class="buttonRow">
@@ -147,7 +147,6 @@
           </div>
         </li>
         {% endif %}
-        
         <fieldset>
           <legend>Payment</legend>
           <div id="card-element"></div>

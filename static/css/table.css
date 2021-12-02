@@ -51,11 +51,13 @@ td>div.title,
 td.celltitle {
   display: none;
 }
+
 #orderHistoryTable tr td {
-width: 25%;
-justify-content: center;
-text-align: center;
+  width: 25%;
+  justify-content: center;
+  text-align: center;
 }
+
 tr td:nth-child(n+3) {
   width: 10%;
   justify-content: flex-end;
