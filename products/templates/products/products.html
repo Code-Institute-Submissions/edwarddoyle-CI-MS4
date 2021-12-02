@@ -52,7 +52,10 @@
 {% for product in products %}
 
 <div class="productCard regular-shadow">
- <a href="{% url 'product_detail' product.id %}">   <img src="{% static 'img/hero.jpg' %}"/></a>
+ <a href="{% url 'product_detail' product.id %}">  
+    <img src="{{ product.image_url }}" alt="{{ product.name }}"/>
+    
+  </a>
    <p>{{ product.name }}</p>
    <i>{{ product.category }}</i>
    <p><span>€{{ product.price }}</span></p>
