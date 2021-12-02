@@ -183,16 +183,6 @@ h6 {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
-.green,
-.success {
-  color: var(--green);
-}
-
-.red,
-.error {
-  color: var(--red);
-}
-
 /*    ----- END Colours & Branding -----    */
 :root {
   --brand: var(--brand-light);
@@ -207,6 +197,16 @@ h6 {
   --red: var(--red-light);
   --hero: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
   --font-size: var(--font-size);
+}
+
+.green,
+.success {
+  color: var(--green);
+}
+
+.red,
+.error {
+  color: var(--red);
 }
 
 /*    ----- Page Structure -----    */

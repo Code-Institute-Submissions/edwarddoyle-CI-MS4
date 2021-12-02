@@ -27,6 +27,12 @@
             <li> {{ product.category }}</li>
             <li> {{ product.description }}</li>
             <li> <small>{{ product.information }}</small> </li>
+               {% if request.user.is_superuser %}<li>
+               <p class="buttonRow">
+                <a class="green" href="{% url 'edit_product' product.id %}">Edit</a>
+                <a class="red" href="{% url 'delete_product' product.id %}">Delete</a>
+             </p></li>
+             {% endif %}
             <form action="{% url 'add_to_bag' product.id %}" method="POST">
                {% csrf_token %}
                <li class="column">

@@ -50,14 +50,20 @@
 </p>
 <section class="productsGrid">
 {% for product in products %}
-<a href="{% url 'product_detail' product.id %}"> 
+
 <div class="productCard regular-shadow">
-   <img src="{% static 'img/hero.jpg' %}"/>
+ <a href="{% url 'product_detail' product.id %}">   <img src="{% static 'img/hero.jpg' %}"/></a>
    <p>{{ product.name }}</p>
    <i>{{ product.category }}</i>
    <p><span>€{{ product.price }}</span></p>
+   {% if request.user.is_superuser %}
+   <p class="buttonRow">
+    <a class="green" href="{% url 'edit_product' product.id %}">Edit</a>
+    <a class="red" href="{% url 'delete_product' product.id %}">Delete</a>
+ </p>
+ {% endif %}
 </div>
-</a>
+
 {% endfor %}
 
 
@@ -73,6 +79,7 @@
 const currentURL = new URL(window.location)
 const selectElement = document.querySelector('#selectElement');
 const sortElement = document.querySelector('#sortElement');
+const editElement = document.querySelectorAll('.edit-delete')
 
 selectElement.addEventListener("change", (e) => {
   e.preventDefault();
@@ -98,6 +105,10 @@ sortElement.addEventListener("change", (e) => {
   currentURL.searchParams.set("sort", sortParam)
   currentURL.searchParams.set("direction", directionParam)
   window.location.replace(currentURL)
+}
+
+function editProduct(){
+
 }
 
 </script>
