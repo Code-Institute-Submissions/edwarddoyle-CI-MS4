@@ -6,7 +6,7 @@
     text-align: center;
     width: 100%;
     margin-top: 10vh;
-    height: 15vh; /* if you don't want it to take up the full screen, reduce this number */
+    height: 15vh;
     overflow: hidden;
     background-size: cover !important;
     background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 

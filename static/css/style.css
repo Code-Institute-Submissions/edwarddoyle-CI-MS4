@@ -57,13 +57,11 @@
 }
 
 /*    ----- END Resets -----    */
-
-
 /*    ----- Icons & Fonts -----    */
 @font-face {
   font-family: 'icomoon';
-  src:  url('../icons/icomoon.eot?suvxt1');
-  src:  url('../icons/icomoon.eot?suvxt1#iefix') format('embedded-opentype'),
+  src: url('../icons/icomoon.eot?suvxt1');
+  src: url('../icons/icomoon.eot?suvxt1#iefix') format('embedded-opentype'),
     url('../icons/icomoon.ttf?suvxt1') format('truetype'),
     url('../icons/icomoon.woff?suvxt1') format('woff'),
     url('../icons/icomoon.svg?suvxt1#icomoon') format('svg');
@@ -72,15 +70,14 @@
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
+[class^="icon-"],
+[class*=" icon-"] {
   font-family: 'icomoon' !important;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -89,66 +86,81 @@
 .icon-person:before {
   content: "\e90b";
 }
+
 .icon-message:before {
   content: "\e90a";
 }
+
 .icon-info:before {
   content: "\e900";
   margin-right: 1rem;
 }
+
 .icon-credit-card:before {
   content: "\e910";
   margin-right: 1rem;
 }
+
 .icon-left:before {
   content: "\e90f";
 }
+
 .icon-twitter:before {
   content: "\e90e";
   color: var(--twitter-clr);
   margin-right: 1rem;
 }
+
 .icon-instagram:before {
   content: "\e90c";
   color: var(--instagram-clr);
   margin-right: 1rem;
 }
+
 .icon-facebook:before {
   content: "\e90d";
   color: var(--facebook-clr);
   margin-right: 1rem;
 }
+
 .icon-search:before {
   content: "\e909";
 }
+
 .icon-arrow-up:before {
   content: "\e901";
 }
+
 .icon-up:before {
   content: "\e902";
 }
+
 .icon-logout:before {
   content: "\e903";
 }
+
 .icon-login:before {
   content: "\e904";
 }
+
 .icon-basket:before {
   content: "\e905";
 }
+
 .icon-phone:before {
   content: "\e906";
   margin-right: 1rem;
 }
+
 .icon-location:before {
   content: "\e907";
   margin-right: 1rem;
 }
+
 .icon-email:before {
   content: "\e908";
   margin-right: 1rem;
 }
-
 
 h1 {
   font-size: 2rem;
@@ -182,7 +194,6 @@ h6 {
 .regular-shadow {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
-
 /*    ----- END Colours & Branding -----    */
 :root {
   --brand: var(--brand-light);
@@ -221,13 +232,13 @@ html {
   overflow-x: hidden;
 }
 
-section:not(.searchBar, .header-content, .masthead), .pageContent {
+section:not(.searchBar, .header-content, .masthead),
+.pageContent {
   margin: 2rem 0;
 }
 
 #scrollToTop {
   position: fixed;
-  /* Needs to stay visible for all mobile scrolling */
   display: flex;
   background-color: var(--brand);
   color: var(--white);
@@ -271,7 +282,7 @@ button[type="submit"],
   font-size: 1rem;
 }
 
-.content .button  {
+.content .button {
   padding: .5rem;
   font-size: 1rem;
 }
@@ -320,7 +331,8 @@ nav {
   padding: 0 1rem;
   position: fixed;
 }
-nav > * {
+
+nav>* {
   display: flex;
 }
 
@@ -334,7 +346,6 @@ nav > * {
 
 .shoppingCart {
   display: flex;
-  
 }
 
 .iconBox a:first-child div {
@@ -484,7 +495,6 @@ nav > * {
 }
 
 /*    ----- HOME PAGE -----    */
-
 .video-holder {
   width: 100vw;
   height: 60vh;
@@ -506,20 +516,19 @@ video {
   background-size: cover;
   height: 60vh;
   width: 100vw;
-  padding:  2rem;
+  padding: 2rem;
   z-index: 1;
   position: absolute;
   top: 10vh;
 }
 
-header.homeHeader ~ footer {
+header.homeHeader~footer {
   margin-top: 10vh;
 }
 
 .homeMain {
   margin-top: 10vh;
 }
-
 
 .header-content {
   align-items: flex-start;
@@ -530,10 +539,6 @@ header.homeHeader ~ footer {
   height: 30vh;
 }
 
-/* .header-content>* {
-  margin-bottom: 1.5rem;
-} */
-
 .buttonRow {
   display: flex;
   flex-direction: row;
@@ -542,13 +547,15 @@ header.homeHeader ~ footer {
   margin-top: 1rem;
 }
 
-.buttonRow button:first-child, .buttonRow a:first-child {
+.buttonRow button:first-child,
+.buttonRow a:first-child {
   margin-right: 1rem;
 }
 
 section.welcome {
   margin-top: 20vh;
 }
+
 /*    ----- END HOME PAGE -----    */
 
 /*    ----- CONTACT PAGE ------   */
@@ -586,8 +593,7 @@ section.contact {
   justify-content: space-evenly;
 }
 
-.pageContent div.child{
-/* :not(.spinner, .stepperInput, .cell, .title, .content, fieldset, .form-group, .form-group > div, #card-element, #card-error, .buttonRow, .__PrivateStripeElement) { */
+.pageContent div.child {
   flex: 0 1 650px;
   min-height: 300px;
   margin: 0.5rem;
@@ -602,6 +608,7 @@ section.contact {
   align-items: center;
   justify-content: center;
 }
+
 .imgHolder img {
   width: 100%;
 }
@@ -611,18 +618,14 @@ section.contact {
   flex-direction: row;
   align-items: center;
 }
+
 .includesStepper {
   display: flex;
 }
+
 div.content .stepperInput {
   width: 90%;
 }
-/* .pageContent div>*:not(.closebutton, div + input) {
-  margin: 1rem 0;
-  justify-content: space-between;
-  display: flex;
-  flex-direction: column;
-} */
 
 .pageContent div li {
   margin: 1rem;
@@ -649,7 +652,6 @@ div.content .stepperInput {
 }
 
 .form {
-  /* padding: 2rem; */
   border-radius: 0.5rem;
 }
 
@@ -681,14 +683,14 @@ input.input.stepperInput__input {
   margin: 0 0.5rem;
   padding: 1rem;
 }
+
 div.content form {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-
-
 }
-div.content input.input.stepperInput__input{
+
+div.content input.input.stepperInput__input {
   margin: 0 .5rem;
   padding: 0;
 }
@@ -770,6 +772,7 @@ input::-webkit-inner-spin-button {
 .adminBorder {
   border: thin solid var(--brand)
 }
+
 /*    ----- END CONTACT PAGE ------   */
 /*    ----- Terms PAGE -----    */
 section.terms {
