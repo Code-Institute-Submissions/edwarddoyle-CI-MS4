@@ -1,1 +1,1 @@
-web: gunicorn kcc-app-shop.wsgi:application
+web: gunicorn kcc_store.wsgi.application
