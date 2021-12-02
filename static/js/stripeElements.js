@@ -40,7 +40,10 @@ submitButton.addEventListener('click', function (ev) {
     let checkBox = document.getElementById('id-save-info').hasAttribute('checked')
 
     const getToken = document.querySelector('input[name="csrfmiddlewaretoken"]');
-    const csrfToken = getToken.value.slice(1, -1)
+    // csrftoken = 
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    
+    //getToken.value.slice(1, -1)
     let postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': stripeClientSecret,
