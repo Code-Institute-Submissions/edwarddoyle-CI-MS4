@@ -16,7 +16,7 @@
 {% block content %}
  <div class="pageContent">
       <div class="child imgHolder">
-         <img src="{% static 'img/flowers.jpg'%}" width="250">
+         <img src="{{ product.image_url }}" alt="{{ product.name }}" width="250"/>
       </div>
       <div class="child">
          <ol>
