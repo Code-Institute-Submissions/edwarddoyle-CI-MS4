@@ -63,10 +63,10 @@ An automated or paid user testing service to be considered for future releases
 | HTML code validation | [W3C HTML Validator](https://validator.w3.org)           | PASS   | -       | -        |
 | CSS code validation  | [W3C CSS Validator](https://jigsaw.w3.org/css-validator) | PASS   | -    |      |
 | JS code validation  | [JSHint](https://jshint.com/) | PASS   | -    |      |
+| PEP8 code validation  | [PEP8 Online](http://pep8online.com/) | PASS   | -    |      |
 
 >* Validation & Performance Testing is documented in the [Validation & Performance Test Results Document](static/docs/Validation.pdf)
 >* Javascript Testing is documented in the [JavaScript Test Results Document](static/docs/FunctionTests.pdf)
->* Python Testing is documented in the [Python Test Results Document](static/docs/PythonFunctionTests.pdf)
 
 ### Functional Testing
 
@@ -76,9 +76,18 @@ An automated or paid user testing service to be considered for future releases
 
 >* Validation & Performance Testing is documented in the [Validation & Performance Test Results Document](static/docs/Validation.pdf)
 
-The app responds well when opened, however the serving of the pages seems slower than normal. I investigated further and discovered that Heroku does not modify HTTP requests or responses. A third party add-on or a Gzip compression library would need to be used in future releases as Gzipping is considered the single most important performance enhancement for any website / app. As my knowledge of Python / Flask / Django increases I will hopefully be able to improve these minor speed issues and web serving issues. 
+### Outstanding Issues
 
-Another issue the website encountered is the serving of images in jpeg / png - I ussually webp my images and compress the ones I serve for legacy / less performant browsers. As I am using Cloudinary as a means to store user uploaded images, I will investigate further the use of their AI platform for optimizing and serving images.
+>* The accessibilty of branding colour remains an issue when used on buttons and actionable elements. In future development of this app, a font stroke, or more contrasting font colour will have to be explored.
 
-Other than the issues listed, the app does work quite well as it stands.
+>* The issues in the Javascript code relate to the use of async functions in es8 - I am happy to ignore this error.
 
+>* On occassion, the Stripe webhooks fail to return a 200 status from the app when using the test method in Stripes dashboard.
+
+>* In lighthouse there are performance issues regarding the caching of assets (images), as I learn more about Heroku and the django framework, I'll address these issues by implementing a more robust caching strategy.
+
+>* The PEP8 validator returns "line too long" errors on cartain parts of the code. Unfortunatley, these are lines of code that either can't be split, or I have not found a solution to remedy these errors
+
+### Finally
+
+The app responds well when opened, however the serving of the pages seems slower than regular web apps. I believe this is to do with the dyno loading up when the page is initially visited. Other than the few minor issue, which will be resolved in future releases, I am pleased with the overall performance of the app.
