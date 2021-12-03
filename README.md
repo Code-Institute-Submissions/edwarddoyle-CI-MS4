@@ -417,8 +417,11 @@ The licence for the logo is available [here](static/docs/logolicence.pdf).
 
 ### Acknowledgements
 
-> Stack Overflow and the Code Institute LMS proved to be invaluble resources
-> My employer for allowing me time to juggle a hectic work schedule and completing this project
-> My fellow students for their advice on Slack
+>* The Code Institute LMS proved to be invaluble resources
+>* My employer for allowing me time to juggle a hectic work schedule and completing this project
+>* My fellow students for their advice on Slack
+>* Previous students, whos github repositories proved invaluable
+
+I have learned so many new skills durign my time on this course. Coming from a PHP background I found the syntax change difficult to adapt to. I hope going forward that I can build on the skills I learned through the Code Institute. 
 
 [Back to Top](<#table-of-contents>)
