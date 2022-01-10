@@ -3,7 +3,11 @@ from .models import Post
 
 
 def all_posts(request):
-    context = Post.objects.filter(status=1).order_by('-created')
+
+    context = {
+        'posts': Post.objects.filter(status=1).order_by('-created')
+    }
+
     return render(request, "blog/blog.html", context)
 
 
