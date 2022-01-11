@@ -1,0 +1,51 @@
+section.posts {
+    height: auto;
+    padding: 1rem;
+    width: 100vw;
+  }
+  
+  section.posts>p {
+    margin: 1rem;
+  }
+  
+  .postsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-gap: 1rem;
+  }
+  
+  .postCard {
+    padding: 1rem 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    background: var(--surface2);
+    color: var(--text2);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .postCard p {
+    margin: .5rem 0;
+  }
+
+  .postCard > p.buttonRow {
+      margin-left: auto !important;
+  }
+  
+  .postCard img {
+    width: 100%;
+  }
+  
+  .postCard i {
+    font-size: small;
+  }
+  
+  .postCard span {
+    color: var(--brand);
+  }
+
+  .postCard .buttonRow {
+      align-items: flex-end;
+
+  }

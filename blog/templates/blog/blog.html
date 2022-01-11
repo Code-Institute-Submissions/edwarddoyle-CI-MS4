@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block additional_css %}
-<link rel="stylesheet" href="{% static 'css/products.css' %}">
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
 <link rel="stylesheet" href="{% static 'css/header.css' %}">
 {% endblock %}
 
@@ -17,25 +17,26 @@
 
 
 {% block content %}
-<section class="products">
+<section class="posts">
 
-  <section class="productsGrid">
+  <section class="postsGrid">
     {% for post in posts %}
 
-    <div class="productCard regular-shadow">
-      <a href="{% url 'product_detail' product.id %}">
-        <img src="{{ product.image_url }}" alt="{{ product.name }}" />
+    <div class="postCard regular-shadow">
+
 
       </a>
       <p>{{ post.title }}</p>
-      <i>{{ post.id }}</i>
-      <p><span>€{{ product.price }}</span></p>
-      {% if request.user.is_superuser %}
+      <p><i class="icon-person">{{ post.author }}</i></p>
+      <i>{{ post.created }}</i>
+      <p>{{ post.content|truncatechars:"20" }}</p>
       <p class="buttonRow">
-        <a class="green" href="{% url 'edit_product' product.id %}">Edit</a>
-        <a class="red" href="{% url 'delete_product' product.id %}">Delete</a>
+        
+        <a class="button" href="{% url 'post_detail' post.id %}">Read more</a>
       </p>
-      {% endif %}
+      
+
+
     </div>
 
     {% endfor %}
@@ -46,42 +47,4 @@
 
 {% endblock %}
 
-{% block delayed_js %}
-{{ block.super }}
-<script>
-  const currentURL = new URL(window.location)
-  const selectElement = document.querySelector('#selectElement');
-  const sortElement = document.querySelector('#sortElement');
-  const editElement = document.querySelectorAll('.edit-delete')
 
-  selectElement.addEventListener("change", (e) => {
-    e.preventDefault();
-    let categoryParam = e.currentTarget.value;
-    window.location = "{% url 'products' %}?category=" + categoryParam;
-  });
-
-  sortElement.addEventListener("change", (e) => {
-    e.preventDefault();
-    let selectedParam = e.currentTarget.value;
-    selectedParam == 'reset' ? resetParams() : changeParams(selectedParam);
-  });
-
-  function resetParams() {
-    currentURL.searchParams.delete("sort")
-    currentURL.searchParams.delete("direction")
-    window.location.replace(currentURL)
-  }
-
-  function changeParams(val) {
-    let sortParam = val.split('_')[0];
-    let directionParam = val.split('_')[1];
-    currentURL.searchParams.set("sort", sortParam)
-    currentURL.searchParams.set("direction", directionParam)
-    window.location.replace(currentURL)
-  }
-
-  function editProduct() {
-
-  }
-</script>
-{% endblock %}

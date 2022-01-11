@@ -3,9 +3,9 @@ from .models import Post
 
 
 def all_posts(request):
-    post = Post.objects.filter(status=1).order_by('-created')
+    posts = Post.objects.all()
     context = {
-        'posts': post
+        'posts': posts
     }
 
     return render(request, "blog/blog.html", context)
