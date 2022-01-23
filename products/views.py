@@ -41,7 +41,8 @@ def all_products(request):
             if not query:
                 messages.error(request, ("You need to enter a search term!"))
                 return redirect(reverse('products'))
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(description__icontains=query
+                                                   )
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'

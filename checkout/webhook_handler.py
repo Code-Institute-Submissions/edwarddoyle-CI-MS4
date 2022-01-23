@@ -62,8 +62,10 @@ class StripeWH_Handler:
                 profile.default_country = shipping_details.address.country
                 profile.default_postcode = shipping_details.address.postal_code
                 profile.default_town_or_city = shipping_details.address.city
-                profile.default_address_line_1 = shipping_details.address_line_1
-                profile.default_address_line_2 = shipping_details.address_line_2
+                profile.default_address_line_1 \
+                    = shipping_details.address_line_1
+                profile.default_address_line_2 \
+                    = shipping_details.address_line_2
                 profile.default_county = shipping_details.address.state
                 profile.save()
 
@@ -129,7 +131,8 @@ class StripeWH_Handler:
                     status=500)
         self._send_confirmation_email(order)
         return HttpResponse(
-            content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+            content=f'Webhook received: \
+                {event["type"]} | SUCCESS: Created order in webhook',
             status=200)
 
     def handle_payment_intent_payment_failed(self, event):
