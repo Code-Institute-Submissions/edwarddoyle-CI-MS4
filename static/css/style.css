@@ -83,16 +83,34 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-person:before {
+.icon-operator:before {
   content: "\e90b";
 }
+.icon-cc-amex:before {
+  content: "\e90a";
+}
+.icon-cc-paypal:before {
+  content: "\e906";
+}
+.icon-cc-mastercard:before {
+  content: "\e907";
+}
+.icon-cc-visa:before {
+  content: "\e908";
+}
+.icon-clock-o:before {
+  content: "\e909";
+}
+/* .icon-person:before {
+  content: "\e90b";
+} */
 
 .icon-message:before {
-  content: "\e90a";
+  content: "\e90c";
 }
 
 .icon-info:before {
-  content: "\e900";
+  content: "\e90d";
   margin-right: 1rem;
 }
 
@@ -112,23 +130,23 @@
 }
 
 .icon-instagram:before {
-  content: "\e90c";
+  content: "\e912";
   color: var(--instagram-clr);
   margin-right: 1rem;
 }
 
 .icon-facebook:before {
-  content: "\e90d";
+  content: "\e913";
   color: var(--facebook-clr);
   margin-right: 1rem;
 }
 
 .icon-search:before {
-  content: "\e909";
+  content: "\e914";
 }
 
 .icon-arrow-up:before {
-  content: "\e901";
+  content: "\e915";
 }
 
 .icon-up:before {
@@ -144,23 +162,23 @@
 }
 
 .icon-basket:before {
-  content: "\e905";
+  content: "\e916";
 }
 
 .icon-phone:before {
-  content: "\e906";
+  content: "\e911";
   margin-right: 1rem;
 }
 
 .icon-location:before {
-  content: "\e907";
+  content: "\e917";
   margin-right: 1rem;
 }
 
 .icon-email:before {
-  content: "\e908";
+  content: "\e918";
   margin-right: 1rem;
-}
+} 
 
 h1 {
   font-size: 2rem;
@@ -176,7 +194,7 @@ h3 {
 }
 
 h4 {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 h5 {
@@ -185,6 +203,10 @@ h5 {
 
 h6 {
   font-size: 1rem;
+}
+
+.small {
+  font-size: .75rem;
 }
 
 /*    ----- END Icons & Fonts -----    */
@@ -586,7 +608,7 @@ section.contact {
   padding: 0 2rem;
 }
 
-.pageContent {
+.pageContent{
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -594,7 +616,7 @@ section.contact {
 }
 
 .pageContent div.child {
-  flex: 0 1 650px;
+  flex: 0 1 450px;
   min-height: 300px;
   margin: 0.5rem;
   padding: 1rem;

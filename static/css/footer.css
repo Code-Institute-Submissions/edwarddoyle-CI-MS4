@@ -34,6 +34,17 @@ footer a:hover {
   flex-wrap: wrap;
 }
 
+.ccRow {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: .5rem 0;
+}
+
+.ccRow i {
+  font-size: 1.5rem;
+}
+
 @media only screen and (min-width: 29.8125rem) {
   .ft-main {
     justify-content: space-evenly;
