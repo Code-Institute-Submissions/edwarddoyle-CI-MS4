@@ -649,7 +649,7 @@ div.content .stepperInput {
   width: 90%;
 }
 
-.pageContent div li {
+.pageContent div li:not(.postDetail) {
   margin: 1rem;
   justify-content: flex-start;
   align-items: baseline;

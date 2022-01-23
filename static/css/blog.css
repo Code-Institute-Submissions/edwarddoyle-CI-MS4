@@ -47,5 +47,14 @@ section.posts {
 
   .postCard .buttonRow {
       align-items: flex-end;
+  }
 
+  .pageContent div li.commentCard {
+      margin: 1rem;
+      justify-content: flex-start;
+      align-items: center;
+      display: flex;
+  }
+  .pageContent div li.commentCard > img {
+    margin-right: .5rem;
   }
