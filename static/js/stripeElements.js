@@ -31,17 +31,24 @@ submitButton.addEventListener('click', function (ev) {
     })
     
     submitButton.setAttribute('disabled', true)
-
-    let checkBox = document.getElementById('id-save-info').hasAttribute('checked')
-
     const getToken = document.querySelector('input[name="csrfmiddlewaretoken"]');
     const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-
     let postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': stripeClientSecret,
-        'save_info': checkBox
+       // 'save_info': checkBox
     }
+    let checkBox = document.getElementById("id-save-info");
+    if (typeof (checkBox) !== 'undefined' && checkBox !== null) {
+        if (checkBox.hasAttribute('checked')) {
+            postData.save_info = checkBox;
+        }
+    }
+
+
+
+
+
 
     let url = '/checkout/cache_checkout_data/';
     fetch(url, {
