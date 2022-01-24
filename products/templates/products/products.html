@@ -16,7 +16,7 @@
 <section class="searchBar">
   <div class="searchProducts">
     <form id="searchForm" class="" method="GET" action="{% url 'products' %}">
-      <input type="search" class="filter" name="search" id="search" placeholder="&#xe909;" autocomplete="off"
+      <input type="search" class="filter" name="search" id="search" placeholder="&#xe914;" autocomplete="off"
         autocorrect="off" autocapitalize="none" spellcheck="false" />
       <select id="selectElement" form="searchForm" class="filter" name="select">
         <option value="" selected disabled>Category</option>
@@ -109,10 +109,6 @@
     currentURL.searchParams.set("sort", sortParam)
     currentURL.searchParams.set("direction", directionParam)
     window.location.replace(currentURL)
-  }
-
-  function editProduct() {
-
   }
 </script>
 {% endblock %}
