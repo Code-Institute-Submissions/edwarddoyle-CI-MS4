@@ -135,11 +135,11 @@ After a succesful checkout the user is directed to the checkout success page. It
 
 The Profile page contains a list of the users previous orders. Clicking on the link (order number) the user is brought to an order page detailing the order. The order page also contains a form allowing users update their profile.
 
-### Blog:
+## Blog:
 
 When a user initially arrives at the blog page, all blog posts are displayed. I have incoporated a css grid panel for displaying the blog posts, this allows more posts to added without disrupting the flow of the page. The blog cards are kept clean and minimal, the entire post can be viewed by clickeing the read more button on the blog card.
 
-#### Blog Post:
+### Blog Post:
 
 The blog post page contains an image for the post, the author's name, the date it was added / updated, the quantity of comments and the post content to the right (wraps under on mobile). Below the overview and blog post content there is a commenting system. Users can read through previously left comments or add their own using the comments form.
 
