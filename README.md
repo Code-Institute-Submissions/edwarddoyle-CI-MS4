@@ -462,6 +462,9 @@ The licence for the logo is available [here](static/docs/logolicence.pdf).
 
 * [Envato Tuts+](https://codepen.io/tutsplus/pen/yWrEgW?editors=1010) - Responsive, Multi-Level, Sticky Footer with Flexbox
 
+> DJANGO 
+* [Django Central](https://djangocentral.com/) - Building A Blog Application With Django Tutorial
+
 
 ### Acknowledgements
 
@@ -469,6 +472,7 @@ The licence for the logo is available [here](static/docs/logolicence.pdf).
 >* My employer for allowing me time to juggle a hectic work schedule and completing this project
 >* My fellow students for their advice on Slack
 >* Previous students, whos github repositories proved invaluable
+>* StackOverflow & Django Central
 
 I have learned so many new skills durign my time on this course. Coming from a PHP background I found the syntax change difficult to adapt to. I hope going forward that I can build on the skills I learned through the Code Institute. 
 
