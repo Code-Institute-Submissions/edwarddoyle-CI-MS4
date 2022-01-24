@@ -15,60 +15,47 @@
 </section>
 {% endblock %}
 
-
-
 {% block content %}
 <section>
-   <div class="pageContent blogContent">
-      <div class="child">
-      
-           
-         <ol>
-            <li><img src="{{ post.image_url }}" width="250" alt="{{ post.title }}"></li>
-            <li class="postDetail"> <i class="icon-clock-o"></i><small><em>{{ post.created }}</em></small></li>
-            <li class="postDetail"> <i class="icon-operator"></i><small><em>{{ post.author }}</em></small></li>
-            {% if comments.count > 0 %}
-            <li class="postDetail"> <i class="icon-message"></i><small><em> {{ comments.count }} comments </em></small></li>
-            {% endif %}
-            <!-- <li> <p>{{ post.content }}</p> </li> -->
-         </ol>
-
-      </div>
-      <div class="child"> <p>{{ post.content }}</p> </div>
+  <div class="pageContent blogContent">
+    <div class="child imgHolder">
+      <img src="{{ post.image_url }}" width="250" alt="{{ post.title }}">
     </div>
-  </section>
-  <section>
-    <div class="pageContent blogContent">
-
-      <div class="child">
-
-              <h4>{{ comments.count }} comments</h4>
-         
-              {% for comment in comments %}
-              <ol class="comment">
-                <li class="commentCard"><img src="https://avatars.dicebear.com/api/initials/{{ comment.name }}.svg?radius=50" width="40"><i class="small">{{ comment.created }}</i></li>
-                <li><p>{{ comment.body | linebreaks }}</p></li>
-              </ol>
-              {% endfor %}
-
-          </div>
-          <div class="child">
-   
-
-              <h3>Leave a comment</h3>
-              <form method="post" style="margin-top: 1.3em;">
-                {{ comment_form | crispy }}
-                {% csrf_token %}
-                <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
-              </form>
-
-         </div>
-         
-         
-   </div>
+    <div class="child">
+      <h3>{{ post.title }}</h3>
+      <ol>
+        <li class="postDetail"> <i class="icon-clock-o"></i><small><em>{{ post.created }}</em></small></li>
+        <li class="postDetail"> <i class="icon-operator"></i><small><em>{{ post.author }}</em></small></li>
+        {% if comments.count > 0 %}
+        <li class="postDetail"> <i class="icon-message"></i><small><em> {{ comments.count }} comments </em></small></li>
+        {% endif %}
+      </ol>
+      <p>{{ post.content }}</p>
+    </div>
+  </div>
 </section>
-
-
+<section>
+  <div class="pageContent blogContent">
+    <div class="child">
+      <h4>{{ comments.count }} comments</h4>
+      {% for comment in comments %}
+      <ol class="comment">
+        <li class="commentCard"><img src="https://avatars.dicebear.com/api/initials/{{ comment.name }}.svg?radius=50"
+            width="40"><i class="small">{{ comment.created }}</i></li>
+        <li>
+          <p>{{ comment.body | linebreaks }}</p>
+        </li>
+      </ol>
+      {% endfor %}
+    </div>
+    <div class="child">
+      <h3>Leave a comment</h3>
+      <form method="post" style="margin-top: 1.3em;">
+        {{ comment_form | crispy }}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
 {% endblock %}
-
-
