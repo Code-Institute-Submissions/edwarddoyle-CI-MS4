@@ -135,6 +135,14 @@ After a succesful checkout the user is directed to the checkout success page. It
 
 The Profile page contains a list of the users previous orders. Clicking on the link (order number) the user is brought to an order page detailing the order. The order page also contains a form allowing users update their profile.
 
+### Blog:
+
+When a user initially arrives at the blog page, all blog posts are displayed. I have incoporated a css grid panel for displaying the blog posts, this allows more posts to added without disrupting the flow of the page. The blog cards are kept clean and minimal, the entire post can be viewed by clickeing the read more button on the blog card.
+
+#### Blog Post:
+
+The blog post page contains an image for the post, the author's name, the date it was added / updated, the quantity of comments and the post content to the right (wraps under on mobile). Below the overview and blog post content there is a commenting system. Users can read through previously left comments or add their own using the comments form.
+
 
 [Back to Top](<#table-of-contents>)
 
@@ -272,8 +280,20 @@ Highlight colours are the same as the KCC website. The client chose this pallett
 >* The form contains name and email inputs that are required, a text area for general comments or messages.
 >* The submit button should indicate ‘a state of loading’ once clicked, provided all form validations pass
 
+#### Blog Page
+
+>* The blog page should display a list of blog cards.
+>* Clicking on the read more button should redirect the user to the blog post page.
+
+#### Blog Post Page
+
+>* The blog post page should display the author, date, comment count, blog post image and post content.
+>* The blog post page should show a list of comments that have been approved for display.
+>* A contact form allows the visitor to leave a comment on the post.
+
 ### Features to implement
 * More robust admin dashboard for product management
+* Dashboard to manage blog posts without logging into django-admin
 * Accessibility issues to be addressed
 * Cookie notification pop up and privacy policy (feature removed)
 * More strategic caching policy
@@ -358,7 +378,12 @@ To use this template:
 
 >*The Gitpod browser extension must be installed for this option to become visible. Gitpod provide a browser extension for Chrome [here](https://chrome.google.com/webstore/detail/gitpod-dev-environments-i/dodmmooeoklaejobgleioelladacbeki) and for Firefox [here](https://addons.mozilla.org/en-US/firefox/addon/gitpod/)
 
-### Hosting
+### Local Deployment
+
+Using Gitpod, open a terminal and execute the following command:
+> django-admin startproject kcc-app-shop
+
+### Heroku Deployment
 
 This website is hosted on [Heroku](https://heroku.com/). To deploy the live site, I followed these steps:
 
@@ -367,6 +392,21 @@ This website is hosted on [Heroku](https://heroku.com/). To deploy the live site
 3. Give the app a name and select Europe as the region.
 4. Go to deploy and setup connection to Github (enable automatic deploys).
 5. Navigate to the settings section and click reveal config vars.
+
+#### Automatic Deploys - link Github to Heroku
+
+1. Click the deploy tab and select GitHub - Connect to GitHub.
+2. A prompt to find a github repository to connect to will then be displayed.
+3. Enter the repository name for the project and click search.
+4. Once the repo has been found, click the connect button.
+
+#### Database Setup
+
+1. Click resources tab
+2. Search for Postgres under add-ons and select Heroku Postgres
+3. Select Hobby Dev - Free and Submit Order Form.
+
+#### Set env vars
 
 Click the settings tab and then click the Reveal Config Vars button and add the following:
 
@@ -384,8 +424,7 @@ Click the settings tab and then click the Reveal Config Vars button and add the 
 | USE_AWS | - variable to use aws - |
 
 
-
-### Local
+### Run Local
 
 To run this project locally there are two options through Github (clone or download). To clone or download, navigate to the repository, click the Code button and select Clone or Download:
 
@@ -393,7 +432,16 @@ To run this project locally there are two options through Github (clone or downl
 
 2. Download: This option provides a .zip file that can be downloaded, extracted and deployed to a local webserver or edited in your IDE.
 
+#### Fork Project
+
+Forking the repository means you will have a copy of the repository and any changes you make will not affect the original repository.
+
+1. Navigate to the GitHub Repository you want to fork
+2. Click the fork button located on the top right of the page
+3. You should now have a copy of the original repository in your GitHub account
+
 [Back to Top](<#table-of-contents>)
+
 
 ## Credits
 
